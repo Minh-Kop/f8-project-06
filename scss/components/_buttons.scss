@@ -1,0 +1,23 @@
+@use '../abstracts';
+
+.btn {
+    height: 62px;
+    padding: 16px 37px;
+
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 1.66667;
+    color: #fdfdfd;
+    user-select: none;
+
+    @include abstracts.screen(sm) {
+        padding: 12px 32px;
+
+        font-size: 1.6rem;
+        line-height: 1.875;
+    }
+
+    &--primary {
+        background: var(--primary-color);
+    }
+}
