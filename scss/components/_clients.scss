@@ -1,0 +1,90 @@
+@use '../abstracts';
+
+.clients {
+    margin-top: 98px;
+
+    @include abstracts.screen(sm) {
+        margin-top: 125px;
+    }
+
+    &__wrap {
+        display: flex;
+        column-gap: 105px;
+
+        @include abstracts.screen(sm) {
+            flex-direction: column;
+            gap: 40px;
+        }
+    }
+
+    &__heading {
+        --padding-left-value: 99px;
+
+        position: relative;
+
+        width: calc(var(--padding-left-value) + 253px);
+        padding: 13px 0 0 var(--padding-left-value);
+
+        font-size: 4.2rem;
+        font-weight: 500;
+        line-height: 1.19048;
+        letter-spacing: -1.68px;
+
+        @include abstracts.screen(sm) {
+            width: 169px;
+            margin: 0 auto;
+            padding: 0;
+
+            text-align: center;
+            font-size: 2.8rem;
+            line-height: 1.21429;
+            letter-spacing: -1.12px;
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 35px;
+            left: 0;
+
+            width: 86px;
+            height: 2px;
+            background-color: var(--primary-color);
+
+            @include abstracts.screen(sm) {
+                top: -4px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+    }
+
+    &__list {
+        flex: 1;
+
+        @include abstracts.screen(sm) {
+            --grid-gutter-y: 36px;
+        }
+    }
+}
+
+.client {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    &__icon {
+        width: 36px;
+        height: 36px;
+        object-fit: contain;
+        border-radius: 50%;
+    }
+
+    &__name {
+        white-space: nowrap;
+    }
+
+    & + & {
+        margin-top: 36px;
+    }
+}

@@ -11,6 +11,8 @@ html {
 body {
     font-size: 1.6rem;
     font-family: 'DM Sans', sans-serif;
+    background-color: var(--body-background-color);
+    color: var(--main-text-color);
 }
 
 a,

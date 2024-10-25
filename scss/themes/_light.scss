@@ -1,7 +1,8 @@
 :root {
+    --body-background-color: #fff;
     --primary-color: #5d3bee;
     --header-bg-color: #fbfaff;
-    --heading-text-color: #080415;
+    --main-text-color: #080415;
     --desc-text-color: #51586a;
-    --sidebar-bg: #fff;
+    --sidebar-bg: var(--body-background-color);
 }

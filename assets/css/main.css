@@ -146,6 +146,8 @@ html {
 body {
   font-size: 1.6rem;
   font-family: "DM Sans", sans-serif;
+  background-color: var(--body-background-color);
+  color: var(--main-text-color);
 }
 
 a,
@@ -1298,11 +1300,12 @@ textarea {
   }
 }
 :root {
+  --body-background-color: #fff;
   --primary-color: #5d3bee;
   --header-bg-color: #fbfaff;
-  --heading-text-color: #080415;
+  --main-text-color: #080415;
   --desc-text-color: #51586a;
-  --sidebar-bg: #fff;
+  --sidebar-bg: var(--body-background-color);
 }
 
 .header {
@@ -1601,7 +1604,7 @@ textarea {
   font-size: 1.8rem;
   font-weight: 700;
   line-height: 1.66667;
-  color: var(--heading-text-color);
+  color: var(--main-text-color);
   text-decoration-line: underline;
 }
 @media (max-width: 575.98px) {
@@ -1687,6 +1690,88 @@ textarea {
 }
 .btn--primary {
   background: var(--primary-color);
+}
+
+.clients {
+  margin-top: 98px;
+}
+@media (max-width: 575.98px) {
+  .clients {
+    margin-top: 125px;
+  }
+}
+.clients__wrap {
+  display: flex;
+  column-gap: 105px;
+}
+@media (max-width: 575.98px) {
+  .clients__wrap {
+    flex-direction: column;
+    gap: 40px;
+  }
+}
+.clients__heading {
+  --padding-left-value: 99px;
+  position: relative;
+  width: calc(var(--padding-left-value) + 253px);
+  padding: 13px 0 0 var(--padding-left-value);
+  font-size: 4.2rem;
+  font-weight: 500;
+  line-height: 1.19048;
+  letter-spacing: -1.68px;
+}
+@media (max-width: 575.98px) {
+  .clients__heading {
+    width: 169px;
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+    font-size: 2.8rem;
+    line-height: 1.21429;
+    letter-spacing: -1.12px;
+  }
+}
+.clients__heading::before {
+  content: "";
+  position: absolute;
+  top: 35px;
+  left: 0;
+  width: 86px;
+  height: 2px;
+  background-color: var(--primary-color);
+}
+@media (max-width: 575.98px) {
+  .clients__heading::before {
+    top: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+.clients__list {
+  flex: 1;
+}
+@media (max-width: 575.98px) {
+  .clients__list {
+    --grid-gutter-y: 36px;
+  }
+}
+
+.client {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+.client__icon {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  border-radius: 50%;
+}
+.client__name {
+  white-space: nowrap;
+}
+.client + .client {
+  margin-top: 36px;
 }
 
 /*# sourceMappingURL=main.css.map */
