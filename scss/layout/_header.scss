@@ -349,40 +349,27 @@
 
 .decoration {
     position: absolute;
+    left: 0;
+    bottom: 0;
 
+    max-width: 896px;
+    max-height: 785px;
     object-fit: contain;
 
-    &--1 {
-        left: 0;
-        bottom: 0;
-
-        max-width: 896px;
-        max-height: 785px;
-
-        @include abstracts.screen(sm) {
-            display: none;
-        }
+    @include abstracts.screen(sm) {
+        width: 100%;
+        max-height: 411px;
     }
 
     &--2 {
+        left: initial;
         right: 0;
-        bottom: 0;
 
         max-width: 382px;
         max-height: 205px;
 
         @include abstracts.screen(sm) {
             display: none;
-        }
-    }
-
-    &--3 {
-        @include abstracts.screen(sm) {
-            left: 0;
-            bottom: 0;
-
-            max-width: 390px;
-            max-height: 411px;
         }
     }
 }

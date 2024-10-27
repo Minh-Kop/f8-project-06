@@ -93,9 +93,13 @@
                 <section class="hero">
                     <div class="hero__media">
                         <img src="./assets/img/person.png" alt="A handsome man" class="hero__img">
-                        <img src="./assets/img/decoration-1.png" alt="Decoration 1" class="decoration decoration--1">
-                        <img src="./assets/img/decoration-3.png" alt="Decoration 3"
-                            class="decoration decoration--3 d-none d-sm-block">
+
+                        <!-- Decoration 1 -->
+                        <picture>
+                            <source media="(max-width: 575.98px)" srcset="./assets/img/decorations/decoration-1.2.png">
+                            <img src="./assets/img/decorations/decoration-1.1.png" alt="Decoration 1"
+                                class="decoration">
+                        </picture>
                     </div>
 
                     <div class="hero__content">
@@ -116,7 +120,10 @@
                             <span class="hero__follow-text">Follow me on:</span>
                             <img src="./assets/img/social-links.png" alt="Social links" class="hero__social-links">
                         </div>
-                        <img src="./assets/img/decoration-2.png" alt="Decoration 2" class="decoration decoration--2">
+
+                        <!-- Decoration 2 -->
+                        <img src="./assets/img/decorations/decoration-2.png" alt="Decoration 2"
+                            class="decoration decoration--2">
                     </div>
                 </section>
             </div>
@@ -134,47 +141,50 @@
                         <div class="clients__list row row-cols-4 row-cols-sm-2">
                             <!-- Column 1 -->
                             <div class="clients__col col">
-                                <div class="client">
+                                <a href="#!" class="client">
                                     <img src="./assets/img/clients/google.svg" alt="Google" class="client__icon">
                                     <span class="client__name">Google</span>
-                                </div>
-                                <div class="client">
+                                </a>
+                                <a href="#!" class="client">
                                     <img src="./assets/img/clients/upwork.svg" alt="" class="client__icon">
                                     <span class="client__name">Upwork</span>
-                                </div>
+                                </a>
                             </div>
+
                             <!-- Column 2 -->
                             <div class="clients__col col">
-                                <div class="client">
+                                <a href="#!" class="client">
                                     <img src="./assets/img/clients/warner-bros.svg" alt="" class="client__icon">
                                     <span class="client__name">Warner Bros</span>
-                                </div>
-                                <div class="client">
+                                </a>
+                                <a href="#!" class="client">
                                     <img src="./assets/img/clients/creative-cloud.svg" alt="" class="client__icon">
                                     <span class="client__name">Creative Cloud</span>
-                                </div>
+                                </a>
                             </div>
+
                             <!-- Column 3 -->
                             <div class="clients__col col">
-                                <div class="client">
+                                <a href="#!" class="client">
                                     <img src="./assets/img/clients/mailchimp.svg" alt="" class="client__icon">
                                     <span class="client__name">Mailchimp</span>
-                                </div>
-                                <div class="client">
+                                </a>
+                                <a href="#!" class="client">
                                     <img src="./assets/img/clients/woocommerce.svg" alt="" class="client__icon">
                                     <span class="client__name">Woocommerce</span>
-                                </div>
+                                </a>
                             </div>
+
                             <!-- Column 4 -->
                             <div class="clients__col col">
-                                <div class="client">
+                                <a href="#!" class="client">
                                     <img src="./assets/img/clients/adobe.svg" alt="" class="client__icon">
                                     <span class="client__name">Adobe</span>
-                                </div>
-                                <div class="client">
+                                </a>
+                                <a href="#!" class="client">
                                     <img src="./assets/img/clients/canva.svg" alt="" class="client__icon">
                                     <span class="client__name">Canva</span>
-                                </div>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -200,7 +210,9 @@
                                 <img src="./assets/icons/speciality_1.png" alt="Speciality icon 1"
                                     class="speciality__icon">
                             </div>
-                            <h3 class="speciality__heading">Product design</h3>
+                            <h3 class="speciality__heading">
+                                <a href="#!">Product design</a>
+                            </h3>
                             <p class="speciality__desc">
                                 Lorem ipsum dolor sit amet, solor adipiscing elit. Non nisl solor ut elementum turpis.
                             </p>
@@ -212,7 +224,9 @@
                                 <img src="./assets/icons/speciality_2.png" alt="Speciality icon 2"
                                     class="speciality__icon">
                             </div>
-                            <h3 class="speciality__heading">UI/UX Design</h3>
+                            <h3 class="speciality__heading">
+                                <a href="#!">UI/UX Design</a>
+                            </h3>
                             <p class="speciality__desc">
                                 Lorem ipsum dolor sit amet, solor adipiscing elit. Non nisl solor ut elementum turpis.
                             </p>
@@ -224,7 +238,9 @@
                                 <img src="./assets/icons/speciality_3.png" alt="Speciality icon 3"
                                     class="speciality__icon">
                             </div>
-                            <h3 class="speciality__heading">Interactive design</h3>
+                            <h3 class="speciality__heading">
+                                <a href="#!">Interactive design</a>
+                            </h3>
                             <p class="speciality__desc">
                                 Lorem ipsum dolor sit amet, solor adipiscing elit. Non nisl solor ut elementum turpis.
                             </p>
@@ -236,6 +252,126 @@
                         <span class="slider__dot"></span>
                         <span class="slider__dot slider__dot--active"></span>
                         <span class="slider__dot"></span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects -->
+            <section class="projects">
+                <div class="container container--small">
+                    <!-- Heading -->
+                    <div class="projects__heading-wrap">
+                        <h2 class="projects__heading">
+                            Take a look at my recent projects
+                        </h2>
+                        <p class="projects__desc">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In urna, non nisl tincidunt ut
+                            elementum turpis.
+                        </p>
+                    </div>
+
+                    <!-- Content -->
+                    <ul class="projects__list">
+                        <!-- Project 1 -->
+                        <li class="project-card">
+                            <div class="project-card__content">
+                                <h3 class="project-card__heading">
+                                    <a href="#!">Wally Website</a>
+                                </h3>
+                                <p class="project-card__desc">
+                                    Lorem ipsum dolor amet, consectetur adipiscing st elit.
+                                </p>
+                                <a href="#!" class="project-card__link">Case Study</a>
+                            </div>
+                            <a href="#!">
+                                <img src="./assets/img/projects/project-1.png" alt="Project 1"
+                                    class="project-card__img">
+                            </a>
+
+                            <picture>
+                                <source media="(max-width: 575.98px)"
+                                    srcset="./assets/img/decorations/decoration-3.2.png">
+                                <img src="./assets/img/decorations/decoration-3.1.png" alt="Decoration 3"
+                                    class="project-card__decoration">
+                            </picture>
+                        </li>
+
+                        <!-- Project 2 -->
+                        <li class="project-card">
+                            <div class="project-card__content">
+                                <h3 class="project-card__heading">
+                                    <a href="#!">Banking App</a>
+                                </h3>
+                                <p class="project-card__desc">
+                                    Lorem ipsum dolor amet, consectetur adipiscing st elit.
+                                </p>
+                                <a href="#!" class="project-card__link">Case Study</a>
+                            </div>
+                            <a href="#!">
+                                <img src="./assets/img/projects/project-2.png" alt="Project 2"
+                                    class="project-card__img">
+                            </a>
+
+                            <picture>
+                                <source media="(max-width: 575.98px)"
+                                    srcset="./assets/img/decorations/decoration-3.2.png">
+                                <img src="./assets/img/decorations/decoration-3.1.png" alt="Decoration 3"
+                                    class="project-card__decoration">
+                            </picture>
+                        </li>
+
+                        <!-- Project 3 -->
+                        <li class="project-card">
+                            <div class="project-card__content">
+                                <h3 class="project-card__heading">
+                                    <a href="#!">Web App</a>
+                                </h3>
+                                <p class="project-card__desc">
+                                    Lorem ipsum dolor amet, consectetur adipiscing st elit.
+                                </p>
+                                <a href="#!" class="project-card__link">Case Study</a>
+                            </div>
+                            <a href="#!">
+                                <img src="./assets/img/projects/project-3.png" alt="Project 3"
+                                    class="project-card__img">
+                            </a>
+
+                            <picture>
+                                <source media="(max-width: 575.98px)"
+                                    srcset="./assets/img/decorations/decoration-3.2.png">
+                                <img src="./assets/img/decorations/decoration-3.1.png" alt="Decoration 3"
+                                    class="project-card__decoration">
+                            </picture>
+                        </li>
+
+                        <!-- Project 4 -->
+                        <li class="project-card">
+                            <div class="project-card__content">
+                                <h3 class="project-card__heading">
+                                    <a href="#!">Oculus Website</a>
+                                </h3>
+                                <p class="project-card__desc">
+                                    Lorem ipsum dolor amet, consectetur adipiscing st elit.
+                                </p>
+                                <a href="#!" class="project-card__link">Case Study</a>
+                            </div>
+                            <a href="#!">
+                                <img src="./assets/img/projects/project-4.png" alt="Project 4"
+                                    class="project-card__img">
+                            </a>
+
+                            <picture>
+                                <source media="(max-width: 575.98px)"
+                                    srcset="./assets/img/decorations/decoration-3.2.png">
+                                <img src="./assets/img/decorations/decoration-3.1.png" alt="Decoration 3"
+                                    class="project-card__decoration">
+                            </picture>
+                        </li>
+                    </ul>
+
+                    <!-- Button -->
+                    <div class="projects__btn-wrap">
+                        <button class="btn btn--white">All Projects</button>
                     </div>
                 </div>
             </section>

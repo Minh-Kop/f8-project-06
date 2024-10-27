@@ -20,4 +20,9 @@
     &--primary {
         background: var(--primary-color);
     }
+
+    &--white {
+        background-color: var(--body-background-color);
+        color: var(--main-text-color);
+    }
 }
