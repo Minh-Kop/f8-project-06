@@ -7,7 +7,6 @@
     font-size: 1.8rem;
     font-weight: 700;
     line-height: 1.66667;
-    color: #fdfdfd;
     user-select: none;
 
     @include abstracts.screen(sm) {
@@ -19,10 +18,10 @@
 
     &--primary {
         background: var(--primary-color);
+        color: #fdfdfd;
     }
 
     &--white {
         background-color: var(--body-background-color);
-        color: var(--main-text-color);
     }
 }

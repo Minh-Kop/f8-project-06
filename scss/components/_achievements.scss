@@ -1,0 +1,221 @@
+@use '../abstracts';
+
+.achievements {
+    margin-top: 140px;
+
+    @include abstracts.screen(sm) {
+        margin-top: 120px;
+    }
+
+    &-wrap {
+        position: relative;
+
+        padding-bottom: 375px;
+
+        @include abstracts.screen(sm) {
+            padding-bottom: 202px;
+        }
+    }
+
+    &__intro-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+
+        @include abstracts.screen(sm) {
+            gap: 4px;
+        }
+    }
+
+    &__intro {
+        color: var(--primary-color);
+        font-size: 3.2rem;
+        font-weight: 500;
+        line-height: 1.25;
+        letter-spacing: -1.28px;
+
+        @include abstracts.screen(sm) {
+            font-size: 2rem;
+            line-height: 2;
+            letter-spacing: -0.8px;
+        }
+    }
+
+    &__hand-icon {
+        width: 30px;
+        height: 30px;
+        object-fit: contain;
+
+        @include abstracts.screen(sm) {
+            width: 18px;
+            height: 18px;
+        }
+    }
+
+    &__heading {
+        margin-top: 10px;
+
+        font-size: 5.6rem;
+        font-weight: 500;
+        line-height: 1.17857;
+        letter-spacing: -2.24px;
+        text-align: center;
+
+        @include abstracts.screen(sm) {
+            font-size: 3.6rem;
+            line-height: 1.16667;
+            letter-spacing: -1.44px;
+        }
+    }
+
+    &__desc {
+        width: 570px;
+        margin: 15px auto 0;
+
+        color: var(--desc-text-color);
+        font-size: 1.8rem;
+        line-height: 1.66667;
+        text-align: center;
+
+        @include abstracts.screen(sm) {
+            width: initial;
+            margin-top: 20px;
+
+            font-size: 1.6rem;
+            line-height: 1.625;
+        }
+    }
+
+    &__list {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 156px;
+
+        width: 946px;
+        margin: 70px auto 0;
+        padding: 20px 0;
+        border-top: 1px solid rgba(8, 4, 21, 0.2);
+        border-bottom: 1px solid rgba(8, 4, 21, 0.2);
+
+        @include abstracts.screen(sm) {
+            gap: 50px;
+
+            width: initial;
+            margin-top: 50px;
+            padding: 30px 0;
+        }
+    }
+}
+
+.achievement {
+    @include abstracts.screen(sm) {
+        flex: none;
+
+        width: 83px;
+
+        &:first-of-type {
+            order: 2;
+        }
+
+        &:nth-of-type(2) {
+            order: 1;
+        }
+
+        &:last-of-type {
+            order: 3;
+        }
+    }
+
+    &__number {
+        font-size: 5.6rem;
+        font-weight: 500;
+        line-height: 1.35714;
+        letter-spacing: 1.68px;
+        text-decoration-line: underline;
+
+        @include abstracts.screen(sm) {
+            font-size: 3rem;
+            line-height: 1.4;
+            letter-spacing: 0.9px;
+        }
+    }
+
+    &__info {
+        color: var(--desc-text-color);
+        font-size: 1.8rem;
+        line-height: 1.66667;
+
+        @include abstracts.screen(sm) {
+            margin-top: 5px;
+
+            font-size: 1.6rem;
+            line-height: 1.375;
+        }
+    }
+}
+
+.intro-video {
+    position: absolute;
+    left: 0;
+    bottom: -323px;
+
+    width: 100%;
+
+    @include abstracts.screen(sm) {
+        bottom: -114px;
+    }
+
+    &__img {
+        display: block;
+
+        width: 100%;
+        height: 628px;
+        object-fit: cover;
+
+        @include abstracts.screen(sm) {
+            height: 276px;
+        }
+    }
+
+    &__btn {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        translate: -50% -50%;
+    }
+
+    &__btn-img {
+        width: 111px;
+        height: 111px;
+        object-fit: contain;
+
+        @include abstracts.screen(sm) {
+            width: 77px;
+            height: 77px;
+        }
+    }
+
+    &__desc {
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+
+        padding: 16px 29px;
+        background-color: var(--body-background-color);
+
+        color: var(--desc-text-color);
+        font-size: 1.8rem;
+        font-weight: 700;
+        line-height: 1.66667;
+        text-transform: uppercase;
+
+        @include abstracts.screen(sm) {
+            padding: 7px 21px;
+
+            font-size: 1.2rem;
+            line-height: 2.5;
+        }
+    }
+}
