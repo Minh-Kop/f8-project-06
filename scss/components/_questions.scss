@@ -1,0 +1,143 @@
+@use '../abstracts';
+
+.questions {
+    margin-top: 95px;
+
+    @include abstracts.screen(sm) {
+        margin-top: 120px;
+    }
+
+    &__heading {
+        width: 575px;
+
+        font-size: 5.6rem;
+        font-weight: 500;
+        line-height: 117.857%;
+        letter-spacing: -2.24px;
+
+        @include abstracts.screen(sm) {
+            width: 316px;
+
+            font-size: 3.6rem;
+            line-height: 116.667%;
+            letter-spacing: -1.44px;
+        }
+    }
+
+    &__list {
+        margin-top: 80px;
+
+        @include abstracts.screen(sm) {
+            margin-top: 42px;
+        }
+    }
+}
+
+.question {
+    position: relative;
+
+    padding: 0 0 33px 22px;
+    border-bottom: 2px solid #08182f;
+
+    @include abstracts.screen(sm) {
+        padding-bottom: 15px;
+        padding-left: 11px;
+    }
+
+    & + & {
+        margin-top: 60px;
+
+        @include abstracts.screen(sm) {
+            margin-top: 40px;
+        }
+    }
+
+    &.active {
+        padding-bottom: 21px;
+        border-color: var(--primary-color);
+
+        @include abstracts.screen(sm) {
+            padding-bottom: 15px;
+        }
+    }
+
+    &__heading {
+        font-size: 3.2rem;
+        font-weight: 500;
+        line-height: 1.25;
+        letter-spacing: -1.28px;
+
+        @include abstracts.screen(sm) {
+            width: 264px;
+
+            font-size: 2.4rem;
+            letter-spacing: -0.96px;
+        }
+    }
+
+    &.active &__heading {
+        color: var(--primary-color);
+    }
+
+    &__answer {
+        display: none;
+
+        width: 487px;
+        margin-top: 23px;
+
+        color: var(--desc-text-color);
+        font-size: 1.8rem;
+        line-height: 166.667%;
+
+        @include abstracts.screen(sm) {
+            width: 316px;
+            margin-top: 15px;
+
+            font-size: 1.6rem;
+            line-height: 1.625;
+        }
+    }
+
+    &.active &__answer {
+        display: block;
+    }
+
+    &__switch-button {
+        display: none;
+
+        position: absolute;
+        top: 12px;
+        right: 0;
+
+        width: 50px;
+        height: 50px;
+
+        @include abstracts.screen(sm) {
+            top: 0;
+            right: 10px;
+
+            width: 33px;
+            height: 33px;
+        }
+    }
+
+    &:not(.active) &__switch-button:not(.active) {
+        display: block;
+    }
+
+    &.active &__switch-button.active {
+        display: block;
+
+        top: 35px;
+
+        @include abstracts.screen(sm) {
+            top: 0;
+        }
+    }
+
+    &__icon {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+}
