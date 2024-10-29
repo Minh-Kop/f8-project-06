@@ -2084,7 +2084,6 @@ textarea {
   }
 }
 .project-card__decoration {
-  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -2641,6 +2640,11 @@ textarea {
   }
 }
 
+.booking__desc, .booking__heading, .booking__icon, .booking__icon-wrap, .booking__btn-wrap {
+  position: relative;
+  z-index: 1;
+}
+
 .booking {
   margin-top: 140px;
 }
@@ -2730,8 +2734,8 @@ textarea {
 }
 .booking__decoration--2 > img,
 .booking__decoration--2 > source {
-  display: block;
   width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 .booking__decoration--3 {
