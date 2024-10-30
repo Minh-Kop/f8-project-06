@@ -1,0 +1,32 @@
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    &__img-wrap {
+        --logo-circle-width: 46px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        width: var(--logo-circle-width);
+        height: var(--logo-circle-width);
+
+        border-radius: 50%;
+        border: 1px solid rgba(93, 59, 238, 0.2);
+    }
+
+    &__img {
+        width: calc(var(--logo-circle-width) / 1.916666667);
+        height: calc(var(--logo-circle-width) / 2.875);
+        object-fit: cover;
+    }
+
+    &__brand {
+        font-size: 2.2rem;
+        font-weight: 500;
+        line-height: 1.36364;
+        text-decoration-line: underline;
+    }
+}

@@ -1,0 +1,17 @@
+.navbar {
+    &__list {
+        display: flex;
+        align-items: center;
+        gap: 43px;
+    }
+
+    &__link {
+        color: var(--desc-text-color);
+        font-size: 1.8rem;
+        line-height: normal;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}

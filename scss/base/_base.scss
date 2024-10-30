@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+:root {
+    --emoji-width: 100px;
+    --emoji-height: var(--emoji-width);
+}
+
 html {
     font-size: 62.5%;
 }

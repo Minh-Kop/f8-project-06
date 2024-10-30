@@ -36,30 +36,25 @@
             <!-- Header top -->
             <div class="container">
                 <div class="header-top">
-                    <!-- Logo - emoji -->
-                    <div class="logo-emoji">
-                        <div class="logo-expand">
-                            <!-- Logo -->
-                            <a href="#!" class="logo">
-                                <div class="logo__img-wrap">
-                                    <img src="./assets/img/logo.png" alt="Logo image" class="logo__img">
-                                </div>
-                                <span class="logo__brand d-md-none">
-                                    hi@arif.interactive
-                                </span>
-                            </a>
-
-                            <!-- Expand icon -->
-                            <img src="./assets/icons/expand-icon.svg" alt="Expand icon"
-                                class="logo__expand-icon d-none d-md-flex js-toggle" toggle-target="#navbar">
+                    <!-- Logo -->
+                    <a href="#!" class="logo">
+                        <div class="logo__img-wrap">
+                            <img src="./assets/img/logo.png" alt="Logo image" class="logo__img">
                         </div>
+                        <span class="logo__brand d-md-none">
+                            hi@arif.interactive
+                        </span>
+                    </a>
 
-                        <!-- Emoji -->
-                        <picture>
-                            <source media="(max-width: 575.98px)" srcset="./assets/img/emoji-small.png">
-                            <img src="./assets/img/emoji.png" alt="" class="emoji">
-                        </picture>
-                    </div>
+                    <!-- Emoji -->
+                    <picture class="emoji-wrap">
+                        <source media="(max-width: 575.98px)" srcset="./assets/img/emoji-small.png">
+                        <img src="./assets/img/emoji.png" alt="" class="emoji">
+                    </picture>
+
+                    <!-- Expand icon -->
+                    <img src="./assets/icons/expand-icon.svg" alt="Expand icon"
+                        class="expand-icon d-none d-md-flex js-toggle" toggle-target="#navbar">
 
                     <!-- Navbar -->
                     <nav id="navbar" class="navbar hide">
@@ -84,6 +79,8 @@
                             </li>
                         </ul>
                     </nav>
+
+                    <!-- Overlay -->
                     <div class="navbar__overlay d-none d-md-block js-toggle" toggle-target="#navbar"></div>
                 </div>
             </div>
@@ -621,6 +618,53 @@
                 </div>
             </section>
         </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <!-- Header top -->
+            <div class="container">
+                <div class="footer-top">
+                    <!-- Logo - navbar -->
+                    <div class="logo-navbar">
+                        <a href="#!" class="logo">
+                            <div class="logo__img-wrap">
+                                <img src="./assets/img/logo.png" alt="Logo image" class="logo__img">
+                            </div>
+                            <span class="logo__brand d-md-none">
+                                hi@arif.interactive
+                            </span>
+                        </a>
+
+                        <!-- Navbar -->
+                        <nav id="navbar" class="navbar hide">
+                            <!-- List -->
+                            <ul class="navbar__list">
+                                <li class="navbar__item">
+                                    <a href="#!" class="navbar__link">Projects</a>
+                                </li>
+                                <li class="navbar__item">
+                                    <a href="#!" class="navbar__link">Journey</a>
+                                </li>
+                                <li class="navbar__item">
+                                    <a href="#!" class="navbar__link">Service</a>
+                                </li>
+                                <li class="navbar__item">
+                                    <a href="#!" class="navbar__link">Contact</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+
+                    <!-- Emoji -->
+                    <picture>
+                        <source media="(max-width: 575.98px)" srcset="./assets/img/emoji-small.png">
+                        <img src="./assets/img/emoji.png" alt="" class="emoji">
+                    </picture>
+
+
+                </div>
+            </div>
+        </footer>
     </body>
 
 </html>
