@@ -13,3 +13,28 @@
         @error "The value '#{$key}' is not in breakpoint list.";
     }
 }
+
+@mixin create-top-bar($padding-top-value, $padding-bottom-value: null) {
+    $padding-bottom-value: if(
+        $padding-bottom-value,
+        $padding-bottom-value,
+        $padding-top-value
+    );
+
+    --padding-top-value: #{$padding-top-value}px;
+    --padding-bottom-value: #{$padding-bottom-value}px;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    height: calc(
+        var(--emoji-height) + var(--padding-top-value) +
+            var(--padding-bottom-value)
+    );
+    padding: var(--padding-top-value) 0 var(--padding-bottom-value);
+
+    @content;
+}

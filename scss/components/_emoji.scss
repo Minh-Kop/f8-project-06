@@ -9,10 +9,6 @@
 
         width: var(--emoji-width);
         height: var(--emoji-height);
-
-        @include abstracts.screen(md) {
-            transform: none;
-        }
     }
 
     width: 100%;

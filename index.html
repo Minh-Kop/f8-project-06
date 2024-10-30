@@ -30,7 +30,7 @@
         <script src="./assets/js/scripts.js"></script>
     </head>
 
-    <body style="height: 8000px;">
+    <body>
         <!-- Header -->
         <header class="header">
             <!-- Header top -->
@@ -621,47 +621,54 @@
 
         <!-- Footer -->
         <footer class="footer">
-            <!-- Header top -->
+            <!-- Footer top -->
             <div class="container">
                 <div class="footer-top">
-                    <!-- Logo - navbar -->
-                    <div class="logo-navbar">
-                        <a href="#!" class="logo">
-                            <div class="logo__img-wrap">
-                                <img src="./assets/img/logo.png" alt="Logo image" class="logo__img">
-                            </div>
-                            <span class="logo__brand d-md-none">
-                                hi@arif.interactive
-                            </span>
-                        </a>
-
-                        <!-- Navbar -->
-                        <nav id="navbar" class="navbar hide">
-                            <!-- List -->
-                            <ul class="navbar__list">
-                                <li class="navbar__item">
-                                    <a href="#!" class="navbar__link">Projects</a>
-                                </li>
-                                <li class="navbar__item">
-                                    <a href="#!" class="navbar__link">Journey</a>
-                                </li>
-                                <li class="navbar__item">
-                                    <a href="#!" class="navbar__link">Service</a>
-                                </li>
-                                <li class="navbar__item">
-                                    <a href="#!" class="navbar__link">Contact</a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
+                    <!-- Logo -->
+                    <a href="#!" class="logo">
+                        <div class="logo__img-wrap">
+                            <img src="./assets/img/logo.png" alt="Logo image" class="logo__img">
+                        </div>
+                        <span class="logo__brand">
+                            hi@arif.interactive
+                        </span>
+                    </a>
 
                     <!-- Emoji -->
-                    <picture>
-                        <source media="(max-width: 575.98px)" srcset="./assets/img/emoji-small.png">
+                    <picture class="emoji-wrap">
                         <img src="./assets/img/emoji.png" alt="" class="emoji">
                     </picture>
 
+                    <!-- Navbar -->
+                    <nav class="navbar">
+                        <!-- List -->
+                        <ul class="navbar__list">
+                            <li class="navbar__item">
+                                <a href="#!" class="navbar__link">Projects</a>
+                            </li>
+                            <li class="navbar__item">
+                                <a href="#!" class="navbar__link">Journey</a>
+                            </li>
+                            <li class="navbar__item">
+                                <a href="#!" class="navbar__link">Service</a>
+                            </li>
+                            <li class="navbar__item">
+                                <a href="#!" class="navbar__link">Contact</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
 
+            <!-- Footer bottom -->
+            <div class="container container--big">
+                <div class="footer__bottom">
+                    <div class="footer__separate"></div>
+                    <p class="footer__copyright">©interactiveArif 2021. All rights reserved.</p>
+                    <div class="footer__policy-terms">
+                        <a href="#!" class="footer__policy">Privacy Policy</a>
+                        <a href="#!" class="footer__terms">Terms of Conditions</a>
+                    </div>
                 </div>
             </div>
         </footer>
