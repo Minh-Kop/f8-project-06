@@ -85,6 +85,8 @@ const setSpecialitiesPosition = () => {
     const $specialitiesList = $('.specialities__list');
     $specialitiesList.on({
         mousedown: handleMouseDownOnSpeciality,
+        mousemove: handleMouseMoveOnSpeciality,
+        mouseup: handleMouseUpOnSpeciality,
         mouseleave: handleMouseLeaveOnSpeciality,
         transitionend: handleTransitionendOnSpeciality,
         // mouseenter: function (e) {
@@ -149,28 +151,20 @@ function handleMouseDownOnSpeciality(e) {
     const $specialitiesList = $(this);
     const originalTranslateXValue = getTranslateXValue($specialitiesList);
 
-    $specialitiesList.addClass('transition-none');
-
-    $('body')
-        .on({
-            mousemove: handleMouseMoveOnSpeciality,
-            mouseup: handleMouseUpOnSpeciality,
-        })
-        .data({
-            $specialitiesList,
-            numberOfChildren: $specialitiesList.children().length - 2,
-            originalTranslateXValue,
-            oldX: e.pageX,
-            oldY: e.pageY,
-            isMouseDown: true,
-        });
+    $specialitiesList.addClass('transition-none').data({
+        numberOfChildren: $specialitiesList.children().length - 2,
+        originalTranslateXValue,
+        oldX: e.pageX,
+        oldY: e.pageY,
+        isMouseDown: true,
+    });
 }
 
 function handleMouseMoveOnSpeciality(e) {
     e.preventDefault();
 
-    const $this = $(this);
-    const { $specialitiesList, oldX, oldY, isMouseDown } = $this.data();
+    const $specialitiesList = $(this);
+    const { oldX, oldY, isMouseDown } = $specialitiesList.data();
 
     if (!isMouseDown) {
         return;
@@ -195,7 +189,7 @@ function handleMouseMoveOnSpeciality(e) {
         transform: `translateX(${translateXValue}px)`,
     });
 
-    $this.data({
+    $specialitiesList.data({
         oldX: newX,
         oldY: newY,
     });
@@ -204,11 +198,15 @@ function handleMouseMoveOnSpeciality(e) {
 function handleMouseUpOnSpeciality(e) {
     e.preventDefault();
 
-    const $this = $(this);
-    const { $specialitiesList, originalTranslateXValue, numberOfChildren } =
-        $this.data();
-    const newTranslateXValue = getTranslateXValue($specialitiesList);
+    const $specialitiesList = $(this);
+    const { originalTranslateXValue, numberOfChildren, isMouseDown } =
+        $specialitiesList.data();
 
+    if (!isMouseDown) {
+        return;
+    }
+
+    const newTranslateXValue = getTranslateXValue($specialitiesList);
     const distance = newTranslateXValue - originalTranslateXValue;
     const specialitiesListWidth = $specialitiesList.outerWidth();
     const threshold = specialitiesListWidth * 0.25;
@@ -225,24 +223,27 @@ function handleMouseUpOnSpeciality(e) {
                 )
             );
         } else {
-            const index =
+            const newIndex =
                 specialitesSliderIndex === -1 ? numberOfChildren - 1 : 0;
             activateDotInSlider(
-                $(`.specialities .slider__dot[slider-index='${index}']`)
+                $(`.specialities .slider__dot[slider-index='${newIndex}']`)
             );
+            $specialitiesList.data({ newIndex });
         }
     }
 
     $specialitiesList.removeClass('transition-none');
     updateTranslateX($specialitiesList, specialitesSliderIndex);
 
-    $(this)
+    $specialitiesList
+        .removeData([
+            'numberOfChildren',
+            'originalTranslateXValue',
+            'oldX',
+            'oldY',
+        ])
         .data({
             isMouseDown: false,
-        })
-        .off({
-            mousemove: handleMouseMoveOnSpeciality,
-            mouseup: handleMouseUpOnSpeciality,
         });
 }
 
@@ -250,22 +251,18 @@ function handleTransitionendOnSpeciality(e) {
     e.preventDefault();
 
     const $specialitiesList = $(this);
-    const numberOfChildren = $specialitiesList.children().length - 2;
+    const { newIndex } = $specialitiesList.data();
 
-    if (
-        specialitesSliderIndex < 0 ||
-        specialitesSliderIndex >= numberOfChildren
-    ) {
-        specialitesSliderIndex =
-            specialitesSliderIndex === -1 ? numberOfChildren - 1 : 0;
+    if (newIndex !== undefined) {
+        specialitesSliderIndex = newIndex;
 
-        $specialitiesList.addClass('transition-none');
+        $specialitiesList.addClass('transition-none').removeData('newIndex');
         updateTranslateX($specialitiesList, specialitesSliderIndex);
     }
 }
 
-const handleMouseLeaveOnSpeciality = (e) => {
+function handleMouseLeaveOnSpeciality(e) {
     e.preventDefault();
 
-    $('body').trigger('mouseup');
-};
+    $(this).trigger('mouseup');
+}
