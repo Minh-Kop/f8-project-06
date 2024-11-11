@@ -39,15 +39,23 @@
         }
     }
 
+    &__list-wrap {
+        overflow: hidden;
+    }
+
     &__list {
+        --delay-time: 1s;
+
         display: flex;
         gap: 30px;
 
         margin-top: 60px;
 
-        overflow: hidden;
+        transition: transform var(--delay-time);
 
         @include abstracts.screen(sm) {
+            gap: 0;
+
             margin-top: 50px;
             margin-bottom: 30px;
         }
@@ -63,8 +71,8 @@
 
     @include abstracts.screen(sm) {
         flex: none;
-        width: 100%;
 
+        width: 100%;
         padding: 29px 50px;
     }
 
@@ -120,6 +128,7 @@
         color: var(--desc-text-color);
         font-size: 1.8rem;
         line-height: 1.66667;
+        user-select: none;
 
         @include abstracts.screen(sm) {
             margin-top: 10px;

@@ -27,6 +27,9 @@
         <link rel="stylesheet" href="./assets/css/main.css">
 
         <!-- Scripts -->
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
         <script src="./assets/js/scripts.js"></script>
     </head>
 
@@ -81,7 +84,7 @@
                     </nav>
 
                     <!-- Overlay -->
-                    <div class="navbar__overlay d-none d-md-block js-toggle" toggle-target="#navbar"></div>
+                    <div class="navbar__overlay d-none d-md-block" toggle-target="#navbar"></div>
                 </div>
             </div>
 
@@ -191,6 +194,7 @@
             <!-- Specialities -->
             <section class="specialities">
                 <div class="container container--small">
+
                     <!-- Specialities heading -->
                     <h2 class="specialities__heading">Specialities</h2>
                     <p class="specialities__desc">
@@ -200,56 +204,58 @@
                     </p>
 
                     <!-- Specialities list -->
-                    <ul class="specialities__list">
-                        <!-- Item 1 -->
-                        <li class="speciality">
-                            <div class="speciality__icon-wrap">
-                                <img src="./assets/icons/speciality_1.png" alt="Speciality icon 1"
-                                    class="speciality__icon">
-                            </div>
-                            <h3 class="speciality__heading">
-                                <a href="#!">Product design</a>
-                            </h3>
-                            <p class="speciality__desc">
-                                Lorem ipsum dolor sit amet, solor adipiscing elit. Non nisl solor ut elementum turpis.
-                            </p>
-                        </li>
+                    <div class="specialities__list-wrap">
+                        <ul class="specialities__list">
+                            <!-- Item 1 -->
+                            <li class="speciality">
+                                <div class="speciality__icon-wrap">
+                                    <img src="./assets/icons/speciality_1.png" alt="Speciality icon 1"
+                                        class="speciality__icon">
+                                </div>
+                                <h3 class="speciality__heading">
+                                    <a href="#!">Product design</a>
+                                </h3>
+                                <p class="speciality__desc">
+                                    Lorem ipsum dolor sit amet, solor adipiscing elit. Non nisl solor ut elementum
+                                    turpis.
+                                </p>
+                            </li>
 
-                        <!-- Item 2 -->
-                        <li class="speciality">
-                            <div class="speciality__icon-wrap">
-                                <img src="./assets/icons/speciality_2.png" alt="Speciality icon 2"
-                                    class="speciality__icon">
-                            </div>
-                            <h3 class="speciality__heading">
-                                <a href="#!">UI/UX Design</a>
-                            </h3>
-                            <p class="speciality__desc">
-                                Lorem ipsum dolor sit amet, solor adipiscing elit. Non nisl solor ut elementum turpis.
-                            </p>
-                        </li>
+                            <!-- Item 2 -->
+                            <li class="speciality">
+                                <div class="speciality__icon-wrap">
+                                    <img src="./assets/icons/speciality_2.png" alt="Speciality icon 2"
+                                        class="speciality__icon">
+                                </div>
+                                <h3 class="speciality__heading">
+                                    <a href="#!">UI/UX Design</a>
+                                </h3>
+                                <p class="speciality__desc">
+                                    Lorem ipsum dolor sit amet, solor adipiscing elit. Non nisl solor ut elementum
+                                    turpis.
+                                </p>
+                            </li>
 
-                        <!-- Item 3 -->
-                        <li class="speciality">
-                            <div class="speciality__icon-wrap">
-                                <img src="./assets/icons/speciality_3.png" alt="Speciality icon 3"
-                                    class="speciality__icon">
-                            </div>
-                            <h3 class="speciality__heading">
-                                <a href="#!">Interactive design</a>
-                            </h3>
-                            <p class="speciality__desc">
-                                Lorem ipsum dolor sit amet, solor adipiscing elit. Non nisl solor ut elementum turpis.
-                            </p>
-                        </li>
-                    </ul>
+                            <!-- Item 3 -->
+                            <li class="speciality">
+                                <div class="speciality__icon-wrap">
+                                    <img src="./assets/icons/speciality_3.png" alt="Speciality icon 3"
+                                        class="speciality__icon">
+                                </div>
+                                <h3 class="speciality__heading">
+                                    <a href="#!">Interactive design</a>
+                                </h3>
+                                <p class="speciality__desc">
+                                    Lorem ipsum dolor sit amet, solor adipiscing elit. Non nisl solor ut elementum
+                                    turpis.
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+
 
                     <!-- Slider -->
-                    <div class="slider d-none d-sm-flex">
-                        <span class="slider__dot"></span>
-                        <span class="slider__dot slider__dot--active"></span>
-                        <span class="slider__dot"></span>
-                    </div>
+                    <div class="slider d-none d-sm-flex"></div>
                 </div>
             </section>
 

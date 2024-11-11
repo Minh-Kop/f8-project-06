@@ -1,5 +1,4 @@
 @use '../abstracts';
-@use '../themes';
 
 .header {
     position: relative;
@@ -213,8 +212,17 @@
         line-height: 0.95;
         letter-spacing: -3.2px;
 
+        @include abstracts.create-line-clamb(2);
+
+        @include abstracts.screen(xxl) {
+            height: 150px;
+
+            font-size: 7.3rem;
+        }
+
         @include abstracts.screen(sm) {
-            height: 100px;
+            width: 260px;
+            height: auto;
 
             font-size: 4.2rem;
             line-height: 1.19048;
