@@ -1,8 +1,5 @@
 const sm_MaxWidth = 575.98;
 
-let specialitesSliderIndex = 1;
-let isMouseDown = false;
-
 /**
  * JS toggle
  *
@@ -37,6 +34,9 @@ function initJsToggle() {
 }
 
 $(document).ready(() => {
+    window.specialitesSliderIndex = 1;
+    window.feedbacksSliderIndex = 2;
+
     initJsToggle();
 
     $('.navbar__overlay').on('click', (e) => {
@@ -49,51 +49,76 @@ $(document).ready(() => {
 
     // Specialities
     const viewportWidth = $(window).width();
-    console.log({ viewportWidth });
 
     if (viewportWidth <= sm_MaxWidth) {
-        setSpecialitiesPosition();
+        setUpCarousel(
+            '.specialities',
+            '.specialities__list',
+            '.speciality',
+            'specialitesSliderIndex'
+        );
     }
-    $(window).on('resize', function (e) {
-        const viewportWidth = $(window).width();
-        if (viewportWidth <= sm_MaxWidth) {
-            setSpecialitiesPosition();
-        }
-    });
+    // $(window).on('resize', function (e) {
+    //     const viewportWidth = $(window).width();
+    //     if (viewportWidth <= sm_MaxWidth) {
+    //         setUpCarousel();
+    //     }
+    // });
+    setUpCarousel(
+        '.feedbacks',
+        '.feedbacks__list',
+        '.feedback-card',
+        'feedbacksSliderIndex'
+    );
 });
 
-const setSpecialitiesPosition = () => {
-    const $specialities = $('.speciality');
+const setUpCarousel = (sectionClass, listClass, itemClass, sliderIndexName) => {
+    const $list = $(listClass);
+    const $items = $(itemClass);
     let dots = [];
 
     // Add dots to slider
-    $specialities.each(function (index) {
-        dots.push(createDotInSlider(index, specialitesSliderIndex));
+    $items.each(function (index) {
+        dots.push(createDotInSlider(index, window[sliderIndexName]));
     });
-    $('.specialities .slider')
+    $(`${sectionClass} .slider`)
         .append($(dots.join('')))
-        .on('click', '.slider__dot', handleClickSpecialitiesSlider);
+        .on('click', '.slider__dot', function (e) {
+            e.sliderIndexName = sliderIndexName;
+            e.listClass = listClass;
+            handleClickOnSlider(e);
+        });
 
-    // Add clones before first element and after last element
-    const $firstSpeciality = $specialities.eq(0);
-    const $lastSpeciality = $specialities.eq(-1);
+    // Add clones before the first element and after the last element
+    const $firstItem = $items.eq(0);
+    const $lastItem = $items.eq(-1);
 
-    $firstSpeciality.before($lastSpeciality.clone());
-    $lastSpeciality.after($firstSpeciality.clone());
+    $firstItem.before($lastItem.clone());
+    $lastItem.after($firstItem.clone());
 
     // Add event handlers to list track
-    const $specialitiesList = $('.specialities__list');
-    $specialitiesList.on({
-        mousedown: handleMouseDownOnSpeciality,
-        mousemove: handleMouseMoveOnSpeciality,
-        mouseup: handleMouseUpOnSpeciality,
-        mouseleave: handleMouseLeaveOnSpeciality,
-        transitionend: handleTransitionendOnSpeciality,
-        // mouseenter: function (e) {
-        //     $(e.target).css('cursor', 'grab');
-        // },
-    });
-    updateTranslateX($specialitiesList, specialitesSliderIndex);
+    $list
+        .data({
+            sectionClass,
+            sliderIndexName,
+        })
+        .on({
+            mousedown: handleMouseDownOnItem,
+            mousemove: handleMouseMoveOnItem,
+            mouseup: handleMouseUpOnItem,
+            mouseleave: handleMouseUpOnItem,
+            transitionend: handleTransitionendOnItem,
+            // mouseenter: function (e) {
+            //     $(e.target).css('cursor', 'grab');
+            // },
+            touchstart: handleMouseDownOnItem,
+            touchmove: handleMouseMoveOnItem,
+            touchend: handleMouseUpOnItem,
+            touchcancel: handleMouseUpOnItem,
+        });
+
+    // Update transform value of list
+    updateTranslateX($list, window[sliderIndexName]);
 };
 
 const createDotInSlider = (index, initIndex) => {
@@ -111,22 +136,21 @@ const updateTranslateX = ($obj, sliderIndex) => {
     });
 };
 
-const handleClickSpecialitiesSlider = (e) => {
+const handleClickOnSlider = (e) => {
     const $target = $(e.target);
     const targetIndex = parseInt($target.attr('slider-index'));
 
-    if (targetIndex === specialitesSliderIndex) {
+    if (targetIndex === window[e.sliderIndexName]) {
         return;
     }
 
-    specialitesSliderIndex = targetIndex;
-
     activateDotInSlider($target);
-
     updateTranslateX(
-        $('.specialities__list').removeClass('transition-none'),
-        specialitesSliderIndex
+        $(e.listClass).removeClass('transition-none'),
+        targetIndex
     );
+
+    window[e.sliderIndexName] = targetIndex;
 };
 
 function activateDotInSlider($target) {
@@ -145,33 +169,62 @@ function getTranslateXValue($obj) {
     return parseInt(matrixValues[4]);
 }
 
-function handleMouseDownOnSpeciality(e) {
+function handleMouseDownOnItem(e) {
     e.preventDefault();
 
-    const $specialitiesList = $(this);
-    const originalTranslateXValue = getTranslateXValue($specialitiesList);
+    const $list = $(this);
+    const originalTranslateXValue = getTranslateXValue($list);
 
-    $specialitiesList.addClass('transition-none').data({
-        numberOfChildren: $specialitiesList.children().length - 2,
+    let oldX, oldY;
+    if (e.type == 'touchstart') {
+        // console.log('TOUCH START', {
+        //     touches: e.touches,
+        //     targetTouches: e.targetTouches,
+        //     changedTouches: e.changedTouches,
+        // });
+        if (e.touches.length > 1) {
+            console.log('Enough touch');
+            return;
+        }
+        oldX = e.touches[0].pageX;
+        oldY = e.touches[0].pageY;
+    } else {
+        oldX = e.pageX;
+        oldY = e.pageY;
+    }
+
+    $list.addClass('transition-none').data({
+        numberOfChildren: $list.children().length - 2,
         originalTranslateXValue,
-        oldX: e.pageX,
-        oldY: e.pageY,
+        oldX,
+        oldY,
         isMouseDown: true,
     });
 }
 
-function handleMouseMoveOnSpeciality(e) {
+function handleMouseMoveOnItem(e) {
     e.preventDefault();
 
-    const $specialitiesList = $(this);
-    const { oldX, oldY, isMouseDown } = $specialitiesList.data();
+    const $list = $(this);
+    const { oldX, oldY, isMouseDown } = $list.data();
 
     if (!isMouseDown) {
         return;
     }
 
-    const newX = e.pageX;
-    const newY = e.pageY;
+    let newX, newY;
+    if (e.type == 'touchmove') {
+        // console.log('Touch move', {
+        //     touches: e.touches,
+        //     targetTouches: e.targetTouches,
+        //     changedTouches: e.changedTouches,
+        // });
+        newX = e.touches[0].pageX;
+        newY = e.touches[0].pageY;
+    } else {
+        newX = e.pageX;
+        newY = e.pageY;
+    }
 
     const dx = newX - oldX;
     const dy = newY - oldY;
@@ -182,60 +235,67 @@ function handleMouseMoveOnSpeciality(e) {
 
     const mouseDistance = dx * 1;
 
-    const oldTranslateXValue = getTranslateXValue($specialitiesList);
+    const oldTranslateXValue = getTranslateXValue($list);
     const translateXValue = oldTranslateXValue + mouseDistance;
 
-    $specialitiesList.css({
+    $list.css({
         transform: `translateX(${translateXValue}px)`,
     });
 
-    $specialitiesList.data({
+    $list.data({
         oldX: newX,
         oldY: newY,
     });
 }
 
-function handleMouseUpOnSpeciality(e) {
+function handleMouseUpOnItem(e) {
     e.preventDefault();
 
-    const $specialitiesList = $(this);
-    const { originalTranslateXValue, numberOfChildren, isMouseDown } =
-        $specialitiesList.data();
+    const $list = $(this);
+    const {
+        originalTranslateXValue,
+        numberOfChildren,
+        isMouseDown,
+        sectionClass,
+        sliderIndexName,
+    } = $list.data();
 
     if (!isMouseDown) {
         return;
     }
 
-    const newTranslateXValue = getTranslateXValue($specialitiesList);
+    // console.log('TOUCH end', {
+    //     touches: e.touches,
+    //     targetTouches: e.targetTouches,
+    //     changedTouches: e.changedTouches,
+    // });
+
+    const newTranslateXValue = getTranslateXValue($list);
     const distance = newTranslateXValue - originalTranslateXValue;
-    const specialitiesListWidth = $specialitiesList.outerWidth();
-    const threshold = specialitiesListWidth * 0.25;
+    const listWidth = $list.outerWidth();
+    const threshold = listWidth * 0.25;
+    let sliderIndex = window[sliderIndexName];
 
     if (Math.abs(distance) > threshold) {
-        specialitesSliderIndex += distance > 0 ? -1 : 1;
-        if (
-            specialitesSliderIndex >= 0 &&
-            specialitesSliderIndex < numberOfChildren
-        ) {
+        sliderIndex += distance > 0 ? -1 : 1;
+        if (sliderIndex >= 0 && sliderIndex < numberOfChildren) {
             activateDotInSlider(
-                $(
-                    `.specialities .slider__dot[slider-index='${specialitesSliderIndex}']`
-                )
+                $(`${sectionClass} .slider__dot[slider-index='${sliderIndex}']`)
             );
+            window[sliderIndexName] = sliderIndex;
         } else {
-            const newIndex =
-                specialitesSliderIndex === -1 ? numberOfChildren - 1 : 0;
+            const newIndex = sliderIndex < 0 ? numberOfChildren - 1 : 0;
             activateDotInSlider(
-                $(`.specialities .slider__dot[slider-index='${newIndex}']`)
+                $(`${sectionClass} .slider__dot[slider-index='${newIndex}']`)
             );
-            $specialitiesList.data({ newIndex });
+            $list.data({ newIndex });
         }
     }
 
-    $specialitiesList.removeClass('transition-none');
-    updateTranslateX($specialitiesList, specialitesSliderIndex);
+    $list.removeClass('transition-none');
+    updateTranslateX($list, sliderIndex);
 
-    $specialitiesList
+    $list
         .removeData([
             'numberOfChildren',
             'originalTranslateXValue',
@@ -247,22 +307,16 @@ function handleMouseUpOnSpeciality(e) {
         });
 }
 
-function handleTransitionendOnSpeciality(e) {
+function handleTransitionendOnItem(e) {
     e.preventDefault();
 
-    const $specialitiesList = $(this);
-    const { newIndex } = $specialitiesList.data();
+    const $list = $(this);
+    const { newIndex, sliderIndexName } = $list.data();
 
     if (newIndex !== undefined) {
-        specialitesSliderIndex = newIndex;
+        window[sliderIndexName] = newIndex;
 
-        $specialitiesList.addClass('transition-none').removeData('newIndex');
-        updateTranslateX($specialitiesList, specialitesSliderIndex);
+        $list.addClass('transition-none').removeData('newIndex');
+        updateTranslateX($list, newIndex);
     }
-}
-
-function handleMouseLeaveOnSpeciality(e) {
-    e.preventDefault();
-
-    $(this).trigger('mouseup');
 }

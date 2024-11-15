@@ -2462,15 +2462,16 @@ textarea {
     line-height: 1.625;
   }
 }
+.feedbacks__list-wrap {
+  overflow: hidden;
+}
 .feedbacks__list {
   display: flex;
-  width: 679px;
   margin: 60px auto 40px;
-  overflow: hidden;
+  transition: transform 1s;
 }
 @media (max-width: 575.98px) {
   .feedbacks__list {
-    width: initial;
     margin-top: 40px;
     margin-bottom: 20px;
   }
@@ -2505,7 +2506,13 @@ textarea {
   flex: none;
   width: 100%;
 }
+.feedback-card__content-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .feedback-card__content {
+  width: 679px;
   color: var(--desc-text-color);
   text-align: center;
   font-size: 2.4rem;
@@ -2513,6 +2520,7 @@ textarea {
 }
 @media (max-width: 575.98px) {
   .feedback-card__content {
+    width: initial;
     font-size: 1.8rem;
   }
 }
