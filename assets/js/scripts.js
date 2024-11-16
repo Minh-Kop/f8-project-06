@@ -77,6 +77,11 @@ $(document).ready(() => {
         '.feedback-card',
         'feedbacksSliderIndex'
     );
+
+    $('.questions').on('click', '.question__icon', (e) => {
+        const $question = $(e.target).closest('.question');
+        $question.toggleClass('question--active');
+    });
 });
 
 const setUpCarousel = (sectionClass, listClass, itemClass, sliderIndexName) => {
