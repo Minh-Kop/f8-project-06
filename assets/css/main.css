@@ -2768,13 +2768,15 @@ textarea {
     letter-spacing: -0.8px;
   }
 }
-.atmosphere__list {
+.atmosphere__list-wrap {
   overflow: hidden;
 }
 @media (max-width: 575.98px) {
   .atmosphere__list {
+    --grid-gutter-x: 0;
     flex-wrap: nowrap;
     margin-bottom: 40px;
+    transition: transform 1s;
   }
 }
 .atmosphere__img {

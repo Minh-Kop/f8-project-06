@@ -60,13 +60,19 @@
         }
     }
 
-    &__list {
+    &__list-wrap {
         overflow: hidden;
+    }
 
+    &__list {
         @include abstracts.screen(sm) {
+            --grid-gutter-x: 0;
+
             flex-wrap: nowrap;
 
             margin-bottom: 40px;
+
+            transition: transform 1s;
         }
     }
 

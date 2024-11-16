@@ -36,6 +36,7 @@ function initJsToggle() {
 $(document).ready(() => {
     window.specialitesSliderIndex = 1;
     window.feedbacksSliderIndex = 2;
+    window.atmosphereSliderIndex = 1;
 
     initJsToggle();
 
@@ -56,6 +57,12 @@ $(document).ready(() => {
             '.specialities__list',
             '.speciality',
             'specialitesSliderIndex'
+        );
+        setUpCarousel(
+            '.atmosphere',
+            '.atmosphere__list',
+            '.atmosphere-img',
+            'atmosphereSliderIndex'
         );
     }
     // $(window).on('resize', function (e) {
