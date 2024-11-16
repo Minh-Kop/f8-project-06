@@ -184,6 +184,20 @@ textarea {
   transition: none !important;
 }
 
+.grabbable {
+  cursor: move; /* fallback if grab cursor is unsupported */
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+}
+
+/* (Optional) Apply a "closed-hand" cursor during drag operation. */
+.grabbable:active {
+  cursor: grabbing;
+  cursor: -moz-grabbing;
+  cursor: -webkit-grabbing;
+}
+
 .row > *, .container-fluid, .container {
   padding-left: calc(var(--grid-gutter-x) / 2);
   padding-right: calc(var(--grid-gutter-x) / 2);

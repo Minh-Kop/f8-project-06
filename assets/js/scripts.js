@@ -83,11 +83,15 @@ const setUpCarousel = (sectionClass, listClass, itemClass, sliderIndexName) => {
     });
     $(`${sectionClass} .slider`)
         .append($(dots.join('')))
-        .on('click', '.slider__dot', function (e) {
-            e.sliderIndexName = sliderIndexName;
-            e.listClass = listClass;
-            handleClickOnSlider(e);
-        });
+        .on(
+            'click',
+            '.slider__dot',
+            {
+                sliderIndexName,
+                listClass,
+            },
+            handleClickOnSlider
+        );
 
     // Add clones before the first element and after the last element
     const $firstItem = $items.eq(0);
@@ -104,17 +108,11 @@ const setUpCarousel = (sectionClass, listClass, itemClass, sliderIndexName) => {
         })
         .on({
             mousedown: handleMouseDownOnItem,
-            mousemove: handleMouseMoveOnItem,
-            mouseup: handleMouseUpOnItem,
-            mouseleave: handleMouseUpOnItem,
             transitionend: handleTransitionendOnItem,
-            // mouseenter: function (e) {
-            //     $(e.target).css('cursor', 'grab');
-            // },
+            'mouseenter mouseleave': function (e) {
+                $(this).toggleClass('grabbable', e.type === 'mouseenter');
+            },
             touchstart: handleMouseDownOnItem,
-            touchmove: handleMouseMoveOnItem,
-            touchend: handleMouseUpOnItem,
-            touchcancel: handleMouseUpOnItem,
         });
 
     // Update transform value of list
@@ -140,17 +138,17 @@ const handleClickOnSlider = (e) => {
     const $target = $(e.target);
     const targetIndex = parseInt($target.attr('slider-index'));
 
-    if (targetIndex === window[e.sliderIndexName]) {
+    if (targetIndex === window[e.data.sliderIndexName]) {
         return;
     }
 
     activateDotInSlider($target);
     updateTranslateX(
-        $(e.listClass).removeClass('transition-none'),
+        $(e.data.listClass).removeClass('transition-none'),
         targetIndex
     );
 
-    window[e.sliderIndexName] = targetIndex;
+    window[e.data.sliderIndexName] = targetIndex;
 };
 
 function activateDotInSlider($target) {
@@ -193,24 +191,26 @@ function handleMouseDownOnItem(e) {
         oldY = e.pageY;
     }
 
-    $list.addClass('transition-none').data({
-        numberOfChildren: $list.children().length - 2,
-        originalTranslateXValue,
-        oldX,
-        oldY,
-        isMouseDown: true,
-    });
+    $list
+        .addClass('transition-none')
+        .data({
+            numberOfChildren: $list.children().length - 2,
+            originalTranslateXValue,
+            oldX,
+            oldY,
+        })
+        .on({
+            'mousemove touchmove': handleMouseMoveOnItem,
+            'mouseup mouseleave.stopMoving touchend touchcancel':
+                handleMouseUpOnItem,
+        });
 }
 
 function handleMouseMoveOnItem(e) {
     e.preventDefault();
 
     const $list = $(this);
-    const { oldX, oldY, isMouseDown } = $list.data();
-
-    if (!isMouseDown) {
-        return;
-    }
+    const { oldX, oldY } = $list.data();
 
     let newX, newY;
     if (e.type == 'touchmove') {
@@ -255,14 +255,9 @@ function handleMouseUpOnItem(e) {
     const {
         originalTranslateXValue,
         numberOfChildren,
-        isMouseDown,
         sectionClass,
         sliderIndexName,
     } = $list.data();
-
-    if (!isMouseDown) {
-        return;
-    }
 
     // console.log('TOUCH end', {
     //     touches: e.touches,
@@ -302,9 +297,9 @@ function handleMouseUpOnItem(e) {
             'oldX',
             'oldY',
         ])
-        .data({
-            isMouseDown: false,
-        });
+        .off(
+            'mousemove mouseup mouseleave.stopMoving touchmove touchend touchcancel'
+        );
 }
 
 function handleTransitionendOnItem(e) {
