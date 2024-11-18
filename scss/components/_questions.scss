@@ -39,6 +39,8 @@
     padding: 0 0 33px 22px;
     border-bottom: 2px solid #08182f;
 
+    transition: border 0.5s;
+
     @include abstracts.screen(sm) {
         padding-bottom: 15px;
         padding-left: 11px;
@@ -58,6 +60,8 @@
         line-height: 1.25;
         letter-spacing: -1.28px;
 
+        transition: color 0.5s;
+
         @include abstracts.screen(sm) {
             width: 264px;
 
@@ -68,6 +72,7 @@
 
     &__answer {
         display: none;
+        opacity: 0;
 
         width: 487px;
         margin-top: 23px;
@@ -75,6 +80,13 @@
         color: var(--desc-text-color);
         font-size: 1.8rem;
         line-height: 166.667%;
+
+        transition: opacity 0.5s, display 0.2s allow-discrete;
+
+        @starting-style {
+            display: none;
+            opacity: 0;
+        }
 
         @include abstracts.screen(sm) {
             width: 316px;
@@ -92,6 +104,8 @@
 
         width: 50px;
         height: 50px;
+
+        transition: top 0.5s;
 
         @include abstracts.screen(sm) {
             top: 0;
@@ -126,6 +140,7 @@
 
         .question__answer {
             display: block;
+            opacity: 1;
         }
 
         .question__switch-button {
