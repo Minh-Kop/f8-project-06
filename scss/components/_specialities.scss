@@ -66,8 +66,6 @@
         display: flex;
         gap: 30px;
 
-        transition: transform 1s;
-
         @include abstracts.screen(md) {
             gap: 0;
         }

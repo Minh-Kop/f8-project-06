@@ -1250,6 +1250,11 @@ textarea {
   transition: none !important;
 }
 
+.transition-transform {
+  --transition-value: 1s;
+  transition: transform var(--transition-value);
+}
+
 .grabbable {
   cursor: move; /* fallback if grab cursor is unsupported */
   cursor: grab;
@@ -1760,7 +1765,6 @@ textarea {
 .specialities__list {
   display: flex;
   gap: 30px;
-  transition: transform 1s;
 }
 @media (max-width: 767.98px) {
   .specialities__list {
@@ -2489,7 +2493,6 @@ textarea {
 }
 .feedbacks__list {
   display: flex;
-  transition: transform 1s;
 }
 .feedbacks__decoration {
   --divided-number: 1;
@@ -2923,7 +2926,6 @@ textarea {
   .atmosphere__list {
     --grid-gutter-x: 0;
     flex-wrap: nowrap;
-    transition: transform 1s;
   }
 }
 .atmosphere__img {

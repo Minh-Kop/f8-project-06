@@ -1,6 +1,8 @@
 const md_MaxWidth = 767.98;
 const sm_MaxWidth = 575.98;
 
+let isSmallScreen = false;
+
 /**
  * JS toggle
  *
@@ -39,6 +41,7 @@ $(document).ready(() => {
     window.feedbacksSliderIndex = 2;
     window.atmosphereSliderIndex = 1;
 
+    // Handle hide/show navbar
     initJsToggle();
 
     $('.navbar__overlay').on('click', (e) => {
@@ -49,7 +52,7 @@ $(document).ready(() => {
         $target.toggleClass('show', false);
     });
 
-    // Specialities
+    // Handle carousels
     const viewportWidth = $(window).width();
 
     if (viewportWidth <= md_MaxWidth) {
@@ -65,13 +68,9 @@ $(document).ready(() => {
             '.atmosphere-img',
             'atmosphereSliderIndex'
         );
+
+        isSmallScreen = true;
     }
-    // $(window).on('resize', function (e) {
-    //     const viewportWidth = $(window).width();
-    //     if (viewportWidth <= sm_MaxWidth) {
-    //         setUpCarousel();
-    //     }
-    // });
     setUpCarousel(
         '.feedbacks',
         '.feedbacks__list',
@@ -79,11 +78,88 @@ $(document).ready(() => {
         'feedbacksSliderIndex'
     );
 
+    // Handle clicks on questions
     $('.questions').on('click', '.question__icon', (e) => {
         const $question = $(e.target).closest('.question');
         $question.toggleClass('question--active');
     });
 });
+
+$(window).on('resize', function (e) {
+    const viewportWidth = $(window).width();
+    if (viewportWidth <= md_MaxWidth) {
+        if (!isSmallScreen) {
+            isSmallScreen = true;
+
+            setUpCarousel(
+                '.specialities',
+                '.specialities__list',
+                '.speciality',
+                'specialitesSliderIndex'
+            );
+            setUpCarousel(
+                '.atmosphere',
+                '.atmosphere__list',
+                '.atmosphere-img',
+                'atmosphereSliderIndex'
+            );
+        }
+    } else {
+        if (isSmallScreen) {
+            isSmallScreen = false;
+
+            removeCarousel(
+                '.specialities',
+                '.specialities__list',
+                '.speciality',
+                'specialitesSliderIndex'
+            );
+            removeCarousel(
+                '.atmosphere',
+                '.atmosphere__list',
+                '.atmosphere-img',
+                'atmosphereSliderIndex'
+            );
+        }
+    }
+    if (isSmallScreen) {
+        updateTranslateX(
+            $('.specialities__list'),
+            window['specialitesSliderIndex']
+        );
+        updateTranslateX(
+            $('.atmosphere__list'),
+            window['atmosphereSliderIndex']
+        );
+    }
+    updateTranslateX($('.feedbacks__list'), window['feedbacksSliderIndex']);
+});
+
+const removeCarousel = (
+    sectionClass,
+    listClass,
+    itemClass,
+    sliderIndexName
+) => {
+    const $list = $(listClass);
+    const $items = $(itemClass);
+
+    // Remove dots in the slider
+    $(`${sectionClass} .slider`).empty();
+
+    // Remove clones before the first element and after the last element of the list
+    const $firstItem = $items.eq(0);
+    const $lastItem = $items.eq(-1);
+
+    $firstItem.remove();
+    $lastItem.remove();
+
+    // Remove event handlers and style css of the list track
+    $list.removeData().off().removeAttr('style');
+
+    // Reset slider index of the list
+    window[sliderIndexName] = 1;
+};
 
 const setUpCarousel = (sectionClass, listClass, itemClass, sliderIndexName) => {
     const $list = $(listClass);
@@ -157,7 +233,7 @@ const handleClickOnSlider = (e) => {
 
     activateDotInSlider($target);
     updateTranslateX(
-        $(e.data.listClass).removeClass('transition-none'),
+        $(e.data.listClass).addClass('transition-transform'),
         targetIndex
     );
 
@@ -205,7 +281,7 @@ function handleMouseDownOnItem(e) {
     }
 
     $list
-        .addClass('transition-none')
+        .removeClass('transition-transform')
         .data({
             numberOfChildren: $list.children().length - 2,
             originalTranslateXValue,
@@ -300,7 +376,7 @@ function handleMouseUpOnItem(e) {
         }
     }
 
-    $list.removeClass('transition-none');
+    $list.addClass('transition-transform');
     updateTranslateX($list, sliderIndex);
 
     $list
@@ -324,7 +400,9 @@ function handleTransitionendOnItem(e) {
     if (newIndex !== undefined) {
         window[sliderIndexName] = newIndex;
 
-        $list.addClass('transition-none').removeData('newIndex');
+        $list.removeData('newIndex');
         updateTranslateX($list, newIndex);
     }
+
+    $list.removeClass('transition-transform');
 }

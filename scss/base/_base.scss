@@ -76,6 +76,12 @@ textarea {
     transition: none !important;
 }
 
+.transition-transform {
+    --transition-value: 1s;
+
+    transition: transform var(--transition-value);
+}
+
 .grabbable {
     cursor: move; /* fallback if grab cursor is unsupported */
     cursor: grab;
