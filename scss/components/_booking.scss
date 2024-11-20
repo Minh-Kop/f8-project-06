@@ -1,9 +1,5 @@
+@use '../base';
 @use '../abstracts';
-
-%higher-z-index {
-    position: relative;
-    z-index: 1;
-}
 
 .booking {
     margin-top: 140px;
@@ -96,6 +92,10 @@
         @include abstracts.screen(lg) {
             font-size: 1.7rem;
             line-height: 1.625;
+        }
+
+        @include abstracts.screen(md) {
+            width: 420px;
         }
 
         @include abstracts.screen(sm) {

@@ -56,6 +56,13 @@ textarea {
     cursor: pointer;
 }
 
+%higher-z-index {
+    --z-index-value: 1;
+
+    position: relative;
+    z-index: var(--z-index-value);
+}
+
 .line-clamb {
     --number-of-lines: 1;
 

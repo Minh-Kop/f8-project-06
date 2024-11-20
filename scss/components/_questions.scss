@@ -19,6 +19,7 @@
             width: 427px;
 
             font-size: 4rem;
+            line-height: 1.25;
         }
 
         @include abstracts.screen(sm) {
@@ -35,6 +36,10 @@
 
         @include abstracts.screen(lg) {
             margin-top: 60px;
+        }
+
+        @include abstracts.screen(md) {
+            margin-top: 50px;
         }
 
         @include abstracts.screen(sm) {
@@ -68,7 +73,7 @@
             margin-top: 50px;
         }
 
-        @include abstracts.screen(sm) {
+        @include abstracts.screen(md) {
             margin-top: 40px;
         }
     }
@@ -82,6 +87,8 @@
         transition: color 0.5s;
 
         @include abstracts.screen(lg) {
+            width: 350px;
+
             font-size: 2.8rem;
         }
 
@@ -147,10 +154,13 @@
             top: 8px;
         }
 
+        @include abstracts.screen(md) {
+            top: 0;
+        }
+
         @include abstracts.screen(sm) {
             --divided-number: 1.515151515;
 
-            top: 0;
             right: 10px;
         }
     }
@@ -191,6 +201,10 @@
 
             @include abstracts.screen(lg) {
                 top: 25px;
+            }
+
+            @include abstracts.screen(md) {
+                top: 10px;
             }
 
             @include abstracts.screen(sm) {

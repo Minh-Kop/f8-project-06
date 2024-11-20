@@ -51,30 +51,34 @@
 
         @include abstracts.screen(lg) {
             font-size: 1.7rem;
+            line-height: 1.764705882;
+        }
+
+        @include abstracts.screen(md) {
+            width: initial;
         }
 
         @include abstracts.screen(sm) {
-            width: initial;
             font-size: 1.6rem;
             line-height: 1.625;
         }
     }
 
     &__list-wrap {
-        overflow: hidden;
-    }
-
-    &__list {
-        display: flex;
-
         margin: 60px auto 40px;
 
-        transition: transform 1s;
+        overflow: hidden;
 
         @include abstracts.screen(sm) {
             margin-top: 40px;
             margin-bottom: 20px;
         }
+    }
+
+    &__list {
+        display: flex;
+
+        transition: transform 1s;
     }
 
     &__decoration {
@@ -136,12 +140,16 @@
             width: 500px;
 
             font-size: 1.9rem;
+            line-height: 1.842105263;
+        }
+
+        @include abstracts.screen(md) {
+            width: initial;
         }
 
         @include abstracts.screen(sm) {
-            width: initial;
-
             font-size: 1.8rem;
+            line-height: 1.66667;
         }
     }
 

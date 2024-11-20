@@ -3,7 +3,7 @@
 .clients {
     margin-top: 98px;
 
-    @include abstracts.screen(sm) {
+    @include abstracts.screen(md) {
         margin-top: 125px;
     }
 
@@ -19,7 +19,7 @@
             gap: 15px;
         }
 
-        @include abstracts.screen(sm) {
+        @include abstracts.screen(md) {
             flex-direction: column;
             gap: 40px;
         }
@@ -52,15 +52,22 @@
             font-size: 3.4rem;
         }
 
-        @include abstracts.screen(sm) {
-            width: 169px;
+        @include abstracts.screen(md) {
+            width: 183px;
             margin: 0 auto;
             padding: 0;
 
             text-align: center;
+            font-size: 3rem;
+            line-height: 1.133333333;
+            letter-spacing: -1.12px;
+        }
+
+        @include abstracts.screen(sm) {
+            width: 169px;
+
             font-size: 2.8rem;
             line-height: 1.21429;
-            letter-spacing: -1.12px;
         }
 
         &::before {
@@ -83,10 +90,12 @@
                 width: 18px;
             }
 
-            @include abstracts.screen(sm) {
-                top: -4px;
+            @include abstracts.screen(md) {
+                top: 0;
                 left: 50%;
                 transform: translateX(-50%);
+
+                width: 48px;
             }
         }
     }
@@ -133,6 +142,16 @@
             width: 23px;
             height: 23px;
         }
+
+        @include abstracts.screen(md) {
+            width: 28px;
+            height: 28px;
+        }
+
+        @include abstracts.screen(sm) {
+            width: 36px;
+            height: 36px;
+        }
     }
 
     &__name {
@@ -140,6 +159,10 @@
 
         @include abstracts.screen(xl) {
             font-size: 1.4rem;
+        }
+
+        @include abstracts.screen(md) {
+            font-size: 1.6rem;
         }
     }
 

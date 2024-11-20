@@ -46,5 +46,9 @@
         @include abstracts.screen(lg) {
             font-size: 1.8rem;
         }
+
+        @include abstracts.screen(md) {
+            font-size: 2.2rem;
+        }
     }
 }

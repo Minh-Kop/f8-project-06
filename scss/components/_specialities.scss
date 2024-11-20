@@ -52,24 +52,24 @@
     }
 
     &__list-wrap {
+        margin-top: 60px;
+
         overflow: hidden;
+
+        @include abstracts.screen(md) {
+            margin-top: 50px;
+            margin-bottom: 30px;
+        }
     }
 
     &__list {
-        --delay-time: 1s;
-
         display: flex;
         gap: 30px;
 
-        margin-top: 60px;
+        transition: transform 1s;
 
-        transition: transform var(--delay-time);
-
-        @include abstracts.screen(sm) {
+        @include abstracts.screen(md) {
             gap: 0;
-
-            margin-top: 50px;
-            margin-bottom: 30px;
         }
     }
 }
@@ -92,7 +92,7 @@
         padding: 25px 25px;
     }
 
-    @include abstracts.screen(sm) {
+    @include abstracts.screen(md) {
         flex: none;
 
         width: 100%;
@@ -154,12 +154,14 @@
             font-size: 2.5rem;
         }
 
-        @include abstracts.screen(sm) {
-            margin-top: 30px;
-
+        @include abstracts.screen(md) {
             font-size: 2.8rem;
             line-height: 1.28571;
             letter-spacing: -1.12px;
+        }
+
+        @include abstracts.screen(sm) {
+            margin-top: 30px;
         }
     }
 

@@ -9,7 +9,10 @@
 
     &-top {
         @include abstracts.create-top-bar(0, 32) {
-            @include abstracts.screen(sm) {
+            @include abstracts.screen(md) {
+                --emoji-height: 100px;
+                --emoji-width: var(--emoji-height);
+
                 --padding-top-value: var(--emoji-height);
                 --padding-bottom-value: 57px;
 
@@ -18,6 +21,14 @@
                 gap: 48px;
 
                 height: auto;
+            }
+        }
+    }
+
+    .logo {
+        &__img-wrap {
+            @include abstracts.screen(md) {
+                --logo-circle-width: 46px;
             }
         }
     }
@@ -35,12 +46,27 @@
             margin-top: 10px;
         }
 
-        &__link {
+        &__list {
+            @include abstracts.screen(md) {
+                gap: 50px;
+            }
+
             @include abstracts.screen(sm) {
+                gap: 38px;
+            }
+        }
+
+        &__link {
+            @include abstracts.screen(md) {
                 display: block;
 
                 padding: 10px 0;
 
+                font-size: 1.8rem;
+                line-height: 1.5;
+            }
+
+            @include abstracts.screen(sm) {
                 font-size: 1.6rem;
                 line-height: 1.25;
             }
@@ -66,7 +92,7 @@
             font-size: 1.6rem;
         }
 
-        @include abstracts.screen(sm) {
+        @include abstracts.screen(md) {
             flex-direction: column-reverse;
             justify-content: initial;
             gap: 49px;
@@ -86,7 +112,7 @@
         height: 1px;
         background-color: rgba(12, 7, 32, 0.2);
 
-        @include abstracts.screen(sm) {
+        @include abstracts.screen(md) {
             top: 59px;
         }
     }
@@ -113,8 +139,6 @@
 }
 
 .container--big {
-    @include abstracts.screen(sm) {
-        padding-left: 0;
-        padding-right: 0;
-    }
+    padding-left: 0;
+    padding-right: 0;
 }

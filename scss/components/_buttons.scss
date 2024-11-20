@@ -13,14 +13,15 @@
         padding: 12px 22px;
 
         font-size: 1.7rem;
-        line-height: 1.875;
+        line-height: 1.764705882;
     }
 
     @include abstracts.screen(lg) {
         font-size: 1.5rem;
+        line-height: 2;
     }
 
-    @include abstracts.screen(sm) {
+    @include abstracts.screen(md) {
         padding: 12px 32px;
 
         font-size: 1.6rem;

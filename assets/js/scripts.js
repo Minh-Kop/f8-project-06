@@ -1,3 +1,4 @@
+const md_MaxWidth = 767.98;
 const sm_MaxWidth = 575.98;
 
 /**
@@ -51,7 +52,7 @@ $(document).ready(() => {
     // Specialities
     const viewportWidth = $(window).width();
 
-    if (viewportWidth <= sm_MaxWidth) {
+    if (viewportWidth <= md_MaxWidth) {
         setUpCarousel(
             '.specialities',
             '.specialities__list',
