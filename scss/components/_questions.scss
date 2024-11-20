@@ -124,6 +124,10 @@
             font-size: 1.7rem;
         }
 
+        @include abstracts.screen(md) {
+            width: 455px;
+        }
+
         @include abstracts.screen(sm) {
             width: 316px;
             margin-top: 15px;

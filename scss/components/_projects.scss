@@ -259,6 +259,9 @@
         @include abstracts.screen(sm) {
             left: initial;
             right: 0;
+
+            width: initial;
+            height: initial;
         }
     }
 
