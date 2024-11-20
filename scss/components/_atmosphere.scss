@@ -3,6 +3,10 @@
 .atmosphere {
     margin-top: 160px;
 
+    @include abstracts.screen(lg) {
+        margin-top: 140px;
+    }
+
     @include abstracts.screen(sm) {
         margin-top: 120px;
     }
@@ -13,6 +17,12 @@
         font-weight: 500;
         line-height: 117.857%;
         letter-spacing: -2.24px;
+
+        @include abstracts.screen(lg) {
+            font-size: 4rem;
+            line-height: 1.15;
+            letter-spacing: -1.44px;
+        }
 
         @include abstracts.screen(sm) {
             font-size: 3.6rem;
@@ -29,6 +39,10 @@
         color: var(--desc-text-color);
         font-size: 1.8rem;
         line-height: 166.667%;
+
+        @include abstracts.screen(lg) {
+            font-size: 1.7rem;
+        }
 
         @include abstracts.screen(sm) {
             width: 350px;
@@ -51,6 +65,11 @@
         letter-spacing: -1.28px;
         text-decoration-line: underline;
 
+        @include abstracts.screen(lg) {
+            font-size: 2.5rem;
+            letter-spacing: -0.68px;
+        }
+
         @include abstracts.screen(sm) {
             margin: 10px 0 60px;
 
@@ -65,6 +84,10 @@
     }
 
     &__list {
+        @include abstracts.screen(lg) {
+            --grid-gutter-x: 10px;
+        }
+
         @include abstracts.screen(sm) {
             --grid-gutter-x: 0;
 
@@ -77,12 +100,18 @@
     }
 
     &__img {
+        --divided-number: 1;
+
         width: 100%;
-        height: 529px;
+        height: calc(529px / var(--divided-number));
         object-fit: cover;
 
+        @include abstracts.screen(lg) {
+            --divided-number: 1.5;
+        }
+
         @include abstracts.screen(sm) {
-            height: 503px;
+            --divided-number: 1.051689861;
         }
     }
 }

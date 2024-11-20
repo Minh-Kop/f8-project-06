@@ -12,6 +12,10 @@
 
         padding-bottom: 375px;
 
+        @include abstracts.screen(lg) {
+            padding-bottom: 250px;
+        }
+
         @include abstracts.screen(sm) {
             padding-bottom: 202px;
         }
@@ -35,6 +39,10 @@
         line-height: 1.25;
         letter-spacing: -1.28px;
 
+        @include abstracts.screen(lg) {
+            font-size: 2.5rem;
+        }
+
         @include abstracts.screen(sm) {
             font-size: 2rem;
             line-height: 2;
@@ -43,13 +51,18 @@
     }
 
     &__hand-icon {
-        width: 30px;
-        height: 30px;
+        --divided-number: 1;
+
+        width: calc(30px / var(--divided-number));
+        height: calc(30px / var(--divided-number));
         object-fit: contain;
 
+        @include abstracts.screen(lg) {
+            --divided-number: 1.4;
+        }
+
         @include abstracts.screen(sm) {
-            width: 18px;
-            height: 18px;
+            --divided-number: 1.666666667;
         }
     }
 
@@ -61,6 +74,10 @@
         line-height: 1.17857;
         letter-spacing: -2.24px;
         text-align: center;
+
+        @include abstracts.screen(lg) {
+            font-size: 4rem;
+        }
 
         @include abstracts.screen(sm) {
             font-size: 3.6rem;
@@ -77,6 +94,10 @@
         font-size: 1.8rem;
         line-height: 1.66667;
         text-align: center;
+
+        @include abstracts.screen(lg) {
+            font-size: 1.7rem;
+        }
 
         @include abstracts.screen(sm) {
             width: initial;
@@ -98,6 +119,15 @@
         padding: 20px 0;
         border-top: 1px solid rgba(8, 4, 21, 0.2);
         border-bottom: 1px solid rgba(8, 4, 21, 0.2);
+
+        @include abstracts.screen(lg) {
+            gap: 80px;
+
+            width: initial;
+            margin-top: 50px;
+
+            font-size: 4rem;
+        }
 
         @include abstracts.screen(sm) {
             gap: 50px;
@@ -135,6 +165,10 @@
         letter-spacing: 1.68px;
         text-decoration-line: underline;
 
+        @include abstracts.screen(lg) {
+            font-size: 4rem;
+        }
+
         @include abstracts.screen(sm) {
             font-size: 3rem;
             line-height: 1.4;
@@ -146,6 +180,10 @@
         color: var(--desc-text-color);
         font-size: 1.8rem;
         line-height: 1.66667;
+
+        @include abstracts.screen(lg) {
+            font-size: 1.7rem;
+        }
 
         @include abstracts.screen(sm) {
             margin-top: 5px;
@@ -161,22 +199,25 @@
     z-index: 1;
     left: 0;
     bottom: -323px;
+    bottom: calc(var(--lower-half-video-length) * -1);
 
     width: 100%;
 
-    @include abstracts.screen(sm) {
-        bottom: -114px;
-    }
-
     &__img {
+        --divided-number: 1;
+
         display: block;
 
         width: 100%;
-        height: 628px;
+        height: calc(628px / var(--divided-number));
         object-fit: cover;
 
+        @include abstracts.screen(lg) {
+            --divided-number: 1.6;
+        }
+
         @include abstracts.screen(sm) {
-            height: 276px;
+            --divided-number: 3.568181818;
         }
     }
 
@@ -188,13 +229,18 @@
     }
 
     &__btn-img {
-        width: 111px;
-        height: 111px;
+        --divided-number: 1;
+
+        width: calc(111px / var(--divided-number));
+        height: calc(111px / var(--divided-number));
         object-fit: contain;
 
+        @include abstracts.screen(lg) {
+            --divided-number: 1.3;
+        }
+
         @include abstracts.screen(sm) {
-            width: 77px;
-            height: 77px;
+            --divided-number: 1.441558442;
         }
     }
 
@@ -211,6 +257,13 @@
         font-weight: 700;
         line-height: 1.66667;
         text-transform: uppercase;
+
+        @include abstracts.screen(lg) {
+            padding: 7px 21px;
+
+            font-size: 1.6rem;
+            line-height: 2.5;
+        }
 
         @include abstracts.screen(sm) {
             padding: 7px 21px;

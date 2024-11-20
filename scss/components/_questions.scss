@@ -15,6 +15,12 @@
         line-height: 117.857%;
         letter-spacing: -2.24px;
 
+        @include abstracts.screen(lg) {
+            width: 427px;
+
+            font-size: 4rem;
+        }
+
         @include abstracts.screen(sm) {
             width: 316px;
 
@@ -26,6 +32,10 @@
 
     &__list {
         margin-top: 80px;
+
+        @include abstracts.screen(lg) {
+            margin-top: 60px;
+        }
 
         @include abstracts.screen(sm) {
             margin-top: 42px;
@@ -41,6 +51,11 @@
 
     transition: border 0.5s;
 
+    @include abstracts.screen(lg) {
+        padding-bottom: 20px;
+        padding-left: 15px;
+    }
+
     @include abstracts.screen(sm) {
         padding-bottom: 15px;
         padding-left: 11px;
@@ -48,6 +63,10 @@
 
     & + & {
         margin-top: 60px;
+
+        @include abstracts.screen(lg) {
+            margin-top: 50px;
+        }
 
         @include abstracts.screen(sm) {
             margin-top: 40px;
@@ -61,6 +80,10 @@
         letter-spacing: -1.28px;
 
         transition: color 0.5s;
+
+        @include abstracts.screen(lg) {
+            font-size: 2.8rem;
+        }
 
         @include abstracts.screen(sm) {
             width: 264px;
@@ -88,6 +111,12 @@
             opacity: 0;
         }
 
+        @include abstracts.screen(lg) {
+            margin-top: 18px;
+
+            font-size: 1.7rem;
+        }
+
         @include abstracts.screen(sm) {
             width: 316px;
             margin-top: 15px;
@@ -98,21 +127,31 @@
     }
 
     &__switch-button {
+        --divided-number: 1;
+
         position: absolute;
         top: 12px;
         right: 0;
 
-        width: 50px;
-        height: 50px;
+        width: calc(50px / var(--divided-number));
+        height: calc(50px / var(--divided-number));
+        border-radius: 50%;
+
+        overflow: hidden;
 
         transition: top 0.5s;
 
+        @include abstracts.screen(lg) {
+            --divided-number: 1.3;
+
+            top: 8px;
+        }
+
         @include abstracts.screen(sm) {
+            --divided-number: 1.515151515;
+
             top: 0;
             right: 10px;
-
-            width: 33px;
-            height: 33px;
         }
     }
 
@@ -130,6 +169,10 @@
         padding-bottom: 21px;
         border-color: var(--primary-color);
 
+        @include abstracts.screen(lg) {
+            padding-bottom: 18px;
+        }
+
         @include abstracts.screen(sm) {
             padding-bottom: 15px;
         }
@@ -145,6 +188,10 @@
 
         .question__switch-button {
             top: 35px;
+
+            @include abstracts.screen(lg) {
+                top: 25px;
+            }
 
             @include abstracts.screen(sm) {
                 top: 0;

@@ -1,8 +1,18 @@
+@use '../abstracts';
+
 .navbar {
     &__list {
         display: flex;
         align-items: center;
         gap: 43px;
+
+        @include abstracts.screen(xl) {
+            gap: 20px;
+        }
+
+        @include abstracts.screen(lg) {
+            gap: 10px;
+        }
     }
 
     &__link {
@@ -12,6 +22,10 @@
 
         &:hover {
             text-decoration: underline;
+        }
+
+        @include abstracts.screen(lg) {
+            font-size: 1.5rem;
         }
     }
 }

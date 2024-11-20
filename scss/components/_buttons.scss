@@ -9,6 +9,17 @@
     line-height: 1.66667;
     user-select: none;
 
+    @include abstracts.screen(xl) {
+        padding: 12px 22px;
+
+        font-size: 1.7rem;
+        line-height: 1.875;
+    }
+
+    @include abstracts.screen(lg) {
+        font-size: 1.5rem;
+    }
+
     @include abstracts.screen(sm) {
         padding: 12px 32px;
 

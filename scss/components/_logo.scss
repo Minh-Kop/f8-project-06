@@ -1,3 +1,5 @@
+@use '../abstracts';
+
 .logo {
     display: flex;
     align-items: center;
@@ -15,6 +17,18 @@
 
         border-radius: 50%;
         border: 1px solid rgba(93, 59, 238, 0.2);
+
+        @include abstracts.screen(lg) {
+            --logo-circle-width: 38px;
+        }
+
+        @include abstracts.screen(md) {
+            --logo-circle-width: 34px;
+        }
+
+        @include abstracts.screen(sm) {
+            --logo-circle-width: 32px;
+        }
     }
 
     &__img {
@@ -28,5 +42,9 @@
         font-weight: 500;
         line-height: 1.36364;
         text-decoration-line: underline;
+
+        @include abstracts.screen(lg) {
+            font-size: 1.8rem;
+        }
     }
 }

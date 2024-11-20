@@ -11,6 +11,14 @@
         display: flex;
         column-gap: 105px;
 
+        @include abstracts.screen(xl) {
+            gap: 25px;
+        }
+
+        @include abstracts.screen(lg) {
+            gap: 15px;
+        }
+
         @include abstracts.screen(sm) {
             flex-direction: column;
             gap: 40px;
@@ -19,16 +27,30 @@
 
     &__heading {
         --padding-left-value: 99px;
+        --adding-value: 253px;
 
         position: relative;
 
-        width: calc(var(--padding-left-value) + 253px);
+        width: calc(var(--padding-left-value) + var(--adding-value));
         padding: 13px 0 0 var(--padding-left-value);
 
         font-size: 4.2rem;
         font-weight: 500;
         line-height: 1.19048;
         letter-spacing: -1.68px;
+
+        @include abstracts.screen(xl) {
+            padding-top: 0;
+
+            font-size: 3.7rem;
+        }
+
+        @include abstracts.screen(lg) {
+            --padding-left-value: 20px;
+            --adding-value: 200px;
+
+            font-size: 3.4rem;
+        }
 
         @include abstracts.screen(sm) {
             width: 169px;
@@ -51,6 +73,16 @@
             height: 2px;
             background-color: var(--primary-color);
 
+            @include abstracts.screen(xl) {
+                top: 21px;
+            }
+
+            @include abstracts.screen(lg) {
+                top: 18px;
+
+                width: 18px;
+            }
+
             @include abstracts.screen(sm) {
                 top: -4px;
                 left: 50%;
@@ -62,8 +94,17 @@
     &__list {
         flex: 1;
 
+        display: grid;
+        grid-template-columns: 1.5fr 2fr 2fr 1fr;
+
+        @include abstracts.screen(lg) {
+            grid-template-columns: 1.3fr 2fr 2fr 1fr;
+        }
+
         @include abstracts.screen(sm) {
             --grid-gutter-y: 36px;
+            grid-template-columns: repeat(2, 1fr);
+            row-gap: 36px;
         }
     }
 }
@@ -73,15 +114,33 @@
     align-items: center;
     gap: 13px;
 
+    @include abstracts.screen(xl) {
+        gap: 8px;
+    }
+
     &__icon {
         width: 36px;
         height: 36px;
         object-fit: contain;
         border-radius: 50%;
+
+        @include abstracts.screen(xl) {
+            width: 25px;
+            height: 25px;
+        }
+
+        @include abstracts.screen(lg) {
+            width: 23px;
+            height: 23px;
+        }
     }
 
     &__name {
         white-space: nowrap;
+
+        @include abstracts.screen(xl) {
+            font-size: 1.4rem;
+        }
     }
 
     & + & {

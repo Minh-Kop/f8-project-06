@@ -62,12 +62,18 @@
         font-size: 1.8rem;
         line-height: 166.667%;
 
+        @include abstracts.screen(lg) {
+            font-size: 1.6rem;
+        }
+
         @include abstracts.screen(sm) {
             flex-direction: column-reverse;
             justify-content: initial;
             gap: 49px;
 
             padding-top: 0;
+
+            font-size: 1.8rem;
         }
     }
 

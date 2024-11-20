@@ -1,4 +1,5 @@
 @use '../abstracts';
+@use '../base';
 
 .header {
     position: relative;
@@ -6,38 +7,20 @@
     background: var(--header-bg-color);
 
     &-top {
-        --padding-top-value: 20px;
-        --padding-bottom-value: var(--padding-top-value);
+        @include abstracts.create-top-bar(20) {
+            @include abstracts.screen(md) {
+                --emoji-width: 37px;
+                --emoji-height: 44px;
 
-        position: relative;
+                justify-content: flex-end;
+                gap: 10px;
 
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+                border-bottom: 1px solid #d6d3e2;
+            }
 
-        height: calc(
-            var(--emoji-height) + var(--padding-top-value) +
-                var(--padding-bottom-value)
-        );
-        padding: var(--padding-top-value) 0 var(--padding-bottom-value);
-
-        @include abstracts.screen(xl) {
-            --emoji-width: 70px;
-            --emoji-height: var(--emoji-width);
-        }
-
-        @include abstracts.screen(md) {
-            --emoji-width: 37px;
-            --emoji-height: 44px;
-
-            justify-content: flex-end;
-            gap: 10px;
-
-            border-bottom: 1px solid #d6d3e2;
-        }
-
-        @include abstracts.screen(sm) {
-            --padding-bottom-value: 15.5px;
+            @include abstracts.screen(sm) {
+                --padding-bottom-value: 15.5px;
+            }
         }
     }
 
@@ -48,28 +31,6 @@
                 left: 0;
 
                 transform: none;
-            }
-        }
-    }
-
-    .logo {
-        &__img-wrap {
-            @include abstracts.screen(lg) {
-                --logo-circle-width: 38px;
-            }
-
-            @include abstracts.screen(md) {
-                --logo-circle-width: 34px;
-            }
-
-            @include abstracts.screen(sm) {
-                --logo-circle-width: 32px;
-            }
-        }
-
-        &__brand {
-            @include abstracts.screen(lg) {
-                font-size: 1.8rem;
             }
         }
     }
@@ -104,14 +65,6 @@
         }
 
         &__list {
-            @include abstracts.screen(xl) {
-                gap: 20px;
-            }
-
-            @include abstracts.screen(lg) {
-                gap: 10px;
-            }
-
             @include abstracts.screen(md) {
                 flex-direction: column;
                 gap: 0;
@@ -125,10 +78,6 @@
         }
 
         &__link {
-            @include abstracts.screen(lg) {
-                font-size: 1.5rem;
-            }
-
             @include abstracts.screen(md) {
                 display: block;
                 padding: 10px 0;
@@ -164,10 +113,24 @@
 }
 
 .hero {
+    --divided-number: 1;
+
     display: flex;
     gap: 156px;
 
     margin-top: 34px;
+
+    @include abstracts.screen(xl) {
+        --divided-number: 1.2;
+
+        gap: 100px;
+    }
+
+    @include abstracts.screen(lg) {
+        --divided-number: 1.5;
+
+        gap: 80px;
+    }
 
     @include abstracts.screen(sm) {
         flex-direction: column-reverse;
@@ -179,15 +142,18 @@
     &__media {
         display: flex;
         justify-content: center;
-        align-items: center;
+        align-items: flex-end;
     }
 
     &__img {
+        --img-width: 514px;
+        --img-height: 705px;
+
         position: relative;
         z-index: 1;
 
-        width: 514px;
-        height: 705px;
+        width: calc(var(--img-width) / var(--divided-number));
+        height: calc(var(--img-height) / var(--divided-number));
         object-fit: contain;
 
         @include abstracts.screen(sm) {
@@ -198,6 +164,14 @@
 
     &__content {
         margin-top: 137px;
+
+        @include abstracts.screen(xl) {
+            margin-top: 90px;
+        }
+
+        @include abstracts.screen(lg) {
+            margin-top: 70px;
+        }
 
         @include abstracts.screen(sm) {
             margin-top: 0;
@@ -212,12 +186,22 @@
         line-height: 0.95;
         letter-spacing: -3.2px;
 
-        @include abstracts.create-line-clamb(2);
-
         @include abstracts.screen(xxl) {
             height: 150px;
 
             font-size: 7.3rem;
+        }
+
+        @include abstracts.screen(xl) {
+            height: 120px;
+
+            font-size: 6rem;
+        }
+
+        @include abstracts.screen(lg) {
+            height: 93px;
+
+            font-size: 4.7rem;
         }
 
         @include abstracts.screen(sm) {
@@ -231,12 +215,23 @@
     }
 
     &__desc {
+        --number-of-lines: 3;
+
         margin-top: 20px;
         width: 370px;
 
         font-size: 1.8rem;
         line-height: 1.66667;
         color: var(--desc-text-color);
+
+        @extend .line-clamb;
+
+        @include abstracts.screen(lg) {
+            width: 100%;
+
+            font-size: 1.4rem;
+            line-height: 1.625;
+        }
 
         @include abstracts.screen(sm) {
             width: 318px;
@@ -247,11 +242,19 @@
     }
 
     &__row {
-        margin-top: 50px;
+        position: relative;
+        z-index: 1;
 
         display: flex;
         align-items: center;
         gap: 30px;
+
+        margin-top: 50px;
+
+        @include abstracts.screen(lg) {
+            margin-top: 30px;
+            gap: 40px;
+        }
 
         @include abstracts.screen(sm) {
             margin-top: 30px;
@@ -262,6 +265,14 @@
     &__content > &__row:nth-of-type(2) {
         margin-top: 104px;
         gap: 15px;
+
+        @include abstracts.screen(xl) {
+            margin-top: 70px;
+        }
+
+        @include abstracts.screen(lg) {
+            margin-top: 50px;
+        }
 
         @include abstracts.screen(sm) {
             margin-top: 30px;
@@ -275,7 +286,7 @@
         line-height: 1.66667;
         text-decoration-line: underline;
 
-        @include abstracts.screen(sm) {
+        @include abstracts.screen(lg) {
             font-size: 1.6rem;
             line-height: 1.875;
         }
@@ -286,6 +297,11 @@
         font-weight: 500;
         line-height: 1.875;
 
+        @include abstracts.screen(lg) {
+            font-size: 1.4rem;
+            line-height: 1.42857;
+        }
+
         @include abstracts.screen(sm) {
             font-size: 1.4rem;
             line-height: 1.42857;
@@ -293,26 +309,46 @@
     }
 
     &__social-links {
-        width: 160px;
-        height: 40px;
+        --divided-number: 1;
+
+        width: calc(160px / var(--divided-number));
+        height: calc(40px / var(--divided-number));
         object-fit: contain;
         cursor: pointer;
 
+        @include abstracts.screen(lg) {
+            --divided-number: 1.2;
+        }
+
         @include abstracts.screen(sm) {
-            width: 124px;
-            height: 31px;
+            --divided-number: 1.290322581;
         }
     }
 }
 
 .decoration {
+    --max-width: 896px;
+    --max-height: 785px;
+
     position: absolute;
     left: 0;
     bottom: 0;
 
-    max-width: 896px;
-    max-height: 785px;
+    max-width: calc(var(--max-width) / var(--divided-number));
+    max-height: calc(var(--max-height) / var(--divided-number));
     object-fit: contain;
+
+    @include abstracts.screen(xxl) {
+        left: -104px;
+    }
+
+    @include abstracts.screen(xl) {
+        left: -55px;
+    }
+
+    @include abstracts.screen(lg) {
+        left: 9px;
+    }
 
     @include abstracts.screen(sm) {
         width: 100%;
@@ -320,11 +356,11 @@
     }
 
     &--2 {
+        --max-width: 382px;
+        --max-height: 205px;
+
         left: initial;
         right: 0;
-
-        max-width: 382px;
-        max-height: 205px;
 
         @include abstracts.screen(sm) {
             display: none;

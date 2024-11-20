@@ -14,6 +14,14 @@
         line-height: 1.17857;
         letter-spacing: -2.24px;
 
+        @include abstracts.screen(xl) {
+            font-size: 5rem;
+        }
+
+        @include abstracts.screen(lg) {
+            font-size: 4rem;
+        }
+
         @include abstracts.screen(sm) {
             font-size: 3.6rem;
             line-height: 1.16667;
@@ -30,6 +38,10 @@
         text-align: center;
         font-size: 1.8rem;
         line-height: 1.66667;
+
+        @include abstracts.screen(lg) {
+            font-size: 1.7rem;
+        }
 
         @include abstracts.screen(sm) {
             width: 350px;
@@ -69,6 +81,17 @@
 
     background: var(--header-bg-color);
 
+    user-select: none;
+
+    @include abstracts.screen(xl) {
+        display: flex;
+        flex-direction: column;
+    }
+
+    @include abstracts.screen(lg) {
+        padding: 25px 25px;
+    }
+
     @include abstracts.screen(sm) {
         flex: none;
 
@@ -88,6 +111,16 @@
 
         overflow: hidden;
 
+        @include abstracts.screen(xl) {
+            width: 68px;
+            height: 68px;
+        }
+
+        @include abstracts.screen(lg) {
+            width: 55px;
+            height: 55px;
+        }
+
         @include abstracts.screen(sm) {
             width: 62px;
             height: 62px;
@@ -95,8 +128,8 @@
     }
 
     &__icon {
-        width: 60px;
-        height: 60px;
+        width: 50px;
+        height: 50px;
         object-fit: contain;
 
         @include abstracts.screen(sm) {
@@ -113,6 +146,14 @@
         line-height: 1.25;
         letter-spacing: -1.28px;
 
+        @include abstracts.screen(xl) {
+            font-size: 3rem;
+        }
+
+        @include abstracts.screen(lg) {
+            font-size: 2.5rem;
+        }
+
         @include abstracts.screen(sm) {
             margin-top: 30px;
 
@@ -128,7 +169,15 @@
         color: var(--desc-text-color);
         font-size: 1.8rem;
         line-height: 1.66667;
-        user-select: none;
+
+        @include abstracts.screen(xl) {
+            margin-top: auto;
+            padding-top: 15px;
+        }
+
+        @include abstracts.screen(lg) {
+            font-size: 1.7rem;
+        }
 
         @include abstracts.screen(sm) {
             margin-top: 10px;

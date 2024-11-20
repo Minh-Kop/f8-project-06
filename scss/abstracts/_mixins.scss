@@ -36,12 +36,10 @@
     );
     padding: var(--padding-top-value) 0 var(--padding-bottom-value);
 
-    @content;
-}
+    @include screen(xl) {
+        --emoji-width: 70px;
+        --emoji-height: var(--emoji-width);
+    }
 
-@mixin create-line-clamb($number-of-lines: 1) {
-    display: -webkit-box;
-    -webkit-line-clamp: #{$number-of-lines};
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+    @content;
 }

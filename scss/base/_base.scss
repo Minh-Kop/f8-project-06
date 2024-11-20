@@ -1,3 +1,5 @@
+@use '../abstracts';
+
 *,
 ::before,
 ::after {
@@ -7,6 +9,15 @@
 :root {
     --emoji-width: 100px;
     --emoji-height: var(--emoji-width);
+    --lower-half-video-length: 323px;
+
+    @include abstracts.screen(lg) {
+        --lower-half-video-length: 200px;
+    }
+
+    @include abstracts.screen(sm) {
+        --lower-half-video-length: 114px;
+    }
 }
 
 html {
@@ -43,6 +54,15 @@ textarea {
     border: none;
     background-color: transparent;
     cursor: pointer;
+}
+
+.line-clamb {
+    --number-of-lines: 1;
+
+    display: -webkit-box;
+    -webkit-line-clamp: var(--number-of-lines);
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .transition-none {

@@ -4,12 +4,16 @@
 .feedbacks {
     position: relative;
 
-    padding: 323px 0 74px;
+    padding: var(--lower-half-video-length) 0 74px;
 
     background-color: var(--header-bg-color);
 
+    @include abstracts.screen(lg) {
+        padding-bottom: 67px;
+    }
+
     @include abstracts.screen(sm) {
-        padding: 114px 0 67px;
+        padding-bottom: 67px;
     }
 
     &__heading {
@@ -20,6 +24,12 @@
         font-weight: 500;
         line-height: 1.17857;
         letter-spacing: -2.24px;
+
+        @include abstracts.screen(lg) {
+            margin-top: 130px;
+
+            font-size: 4rem;
+        }
 
         @include abstracts.screen(sm) {
             margin-top: 121px;
@@ -38,6 +48,10 @@
         text-align: center;
         font-size: 1.8rem;
         line-height: 1.66667;
+
+        @include abstracts.screen(lg) {
+            font-size: 1.7rem;
+        }
 
         @include abstracts.screen(sm) {
             width: initial;
@@ -64,33 +78,35 @@
     }
 
     &__decoration {
-        --width: 1px;
-        --height: 1px;
+        --divided-number: 1;
 
         position: absolute;
         bottom: 0;
 
-        width: var(--width);
-        height: var(--height);
+        width: calc(var(--width) / var(--divided-number));
+        height: calc(var(--height) / var(--divided-number));
         object-fit: contain;
 
         &--4 {
-            left: 0;
-
             --width: 266px;
             --height: 232px;
+
+            left: 0;
         }
 
         &--5 {
-            right: 0;
-
             --width: 338px;
             --height: 207px;
+
+            right: 0;
+        }
+
+        @include abstracts.screen(lg) {
+            --divided-number: 1.7;
         }
 
         @include abstracts.screen(sm) {
-            width: calc(var(--width) / 3);
-            height: calc(var(--height) / 3);
+            --divided-number: 3;
         }
     }
 }
@@ -99,6 +115,8 @@
     flex: none;
 
     width: 100%;
+
+    user-select: none;
 
     &__content-wrap {
         display: flex;
@@ -113,6 +131,12 @@
         text-align: center;
         font-size: 2.4rem;
         line-height: 1.66667;
+
+        @include abstracts.screen(lg) {
+            width: 500px;
+
+            font-size: 1.9rem;
+        }
 
         @include abstracts.screen(sm) {
             width: initial;
@@ -139,8 +163,8 @@
         justify-content: center;
         align-items: flex-end;
 
-        width: 39.833px;
-        height: 39.833px;
+        width: 40px;
+        height: 40px;
         border-radius: 50%;
         background-color: #f29764;
         overflow: hidden;
@@ -156,6 +180,11 @@
         font-size: 3rem;
         font-weight: 500;
         line-height: 1.33333;
+
+        @include abstracts.screen(lg) {
+            font-size: 2.6rem;
+            line-height: 1.538461538;
+        }
 
         @include abstracts.screen(sm) {
             font-size: 2.4rem;
